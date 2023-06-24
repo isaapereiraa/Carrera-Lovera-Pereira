@@ -6,7 +6,7 @@ package Estructuras;
 
 /**
  *Esta clase se encarga de todo lo relacionado a la tabla de dispersion y la implementacion de sus primitivas
- * @author Isabella
+ * @author soyis
  * 
  */
 public class Hashtable {

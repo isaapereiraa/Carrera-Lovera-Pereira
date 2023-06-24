@@ -62,6 +62,7 @@ public class Inicio extends javax.swing.JFrame {
         BotonCsv.setText("Ingresar al Sistema");
         BotonCsv.setBorderPainted(false);
         BotonCsv.setContentAreaFilled(false);
+        BotonCsv.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonCsv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonCsvActionPerformed(evt);
