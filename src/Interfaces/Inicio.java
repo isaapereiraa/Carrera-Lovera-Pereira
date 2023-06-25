@@ -4,6 +4,8 @@
  */
 package Interfaces;
 
+import Clases.Csv;
+
 /**
  *
  * @author soyis
@@ -130,7 +132,10 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonCsvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCsvActionPerformed
-        // TODO add your handling code here:
+        Menu menu = new Menu();
+        menu.setVisible(true);
+
+        this.setVisible(false);
     }//GEN-LAST:event_BotonCsvActionPerformed
 
     /**
