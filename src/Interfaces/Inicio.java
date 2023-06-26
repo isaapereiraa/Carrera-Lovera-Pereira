@@ -6,9 +6,9 @@ package Interfaces;
 
 import Clases.Estado;
 import Clases.Csv;
+import Estructuras.ArrayList;
 import Estructuras.Hashtable;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
