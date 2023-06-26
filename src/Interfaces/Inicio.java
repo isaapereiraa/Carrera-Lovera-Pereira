@@ -4,7 +4,13 @@
  */
 package Interfaces;
 
+import Clases.Estado;
 import Clases.Csv;
+import Estructuras.Hashtable;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -132,6 +138,14 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonCsvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCsvActionPerformed
+        ArrayList<Estado> lista = new ArrayList<>();
+        try {
+            Csv.archivocSV(lista);
+            Csv.imprimir(lista);
+        } catch (IOException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         Menu menu = new Menu();
         menu.setVisible(true);
 

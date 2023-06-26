@@ -9,34 +9,66 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
+ *Esta clase se encarga de las lecturas de los archivos csv y de guardar los datos en el hashtable y ABB
  * @author soyis
  */
 public class Csv {
-
-    public class EstadoToHash {
-        public static void main(String[] args) {
-            File file = new File("Estado.csv");
-            Hashtable hash = new Hashtable();
-
-            try {
-                Scanner scanner = new Scanner(file);
-                while (scanner.hasNextLine()) {
-                    String[] data = scanner.nextLine().split(",");
-                    String key = data[0];
-                    Integer value = Integer.valueOf(data[1]);
-                    hash.put(key, value);
-                }
-                scanner.close();
-            } catch (FileNotFoundException e) {
-                System.out.println("Archivo no encontrado: " + e.getMessage());
+    
+    
+    
+    public static void archivocSV(ArrayList<Estado> clientes) throws FileNotFoundException, IOException{
+        Hashtable hash = new Hashtable();
+        try (BufferedReader br = new BufferedReader(new FileReader("test\\Estado.csv"))){
+            String linea;
+            linea = br.readLine();
+            while ((linea = br.readLine()) != null){
+                String[] datos = linea.split(",");
+                int hab = Integer.parseInt(datos[0]);
+                String nombre = datos[1];
+                String apellido = datos[2];
+                Estado llamada = new Estado(hab, nombre, apellido);
+                clientes.add(llamada);
+//                hash.put(client, hab);
             }
-
-            System.out.println("Hashtable: " + hash);
+        } catch (IOException e){
+            System.out.println("Archivo no encontrado");
         }
     }
+    
+    public static void imprimir(ArrayList<Estado> clientes) {
+        for (int i=0; i<clientes.size(); i++){
+            System.out.println("Numero de habitacion: " + clientes.get(i).getHabitacion());
+            System.out.println("Nombre: " + clientes.get(i).getNombre());
+            System.out.println("Apellido: " + clientes.get(i).getApellido());
+            System.out.println("----------------------------------");
+        }
+    }
+
+//    public static Hashtable EstadoToHash() {
+//        File file = new File("test\\Estado.csv");
+//        Hashtable hash = new Hashtable();
+//        String estadoCsv = "﻿num_hab,primer_nombre,apellido,email,genero,celular,llegada\n";
+//
+//            try {
+//                Scanner scanner = new Scanner(file);
+//                while (scanner.hasNextLine()) {
+//                    String[] data = scanner.nextLine().split(",");
+//                    String key = data[1] + data[2];
+//                    Integer value = Integer.valueOf(data[0]);
+//                    hash.put(key, value);
+//                }
+//                scanner.close();
+//            } catch (FileNotFoundException e) {
+//                System.out.println("Archivo no encontrado: " + e.getMessage());
+//            }
+//
+//            System.out.println("Hashtable: " + hash);
+//        return null;
+//    }
+
 
 }

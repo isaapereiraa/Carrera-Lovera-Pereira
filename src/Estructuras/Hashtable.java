@@ -13,6 +13,7 @@ public class Hashtable {
     private final int size = 16;
     private final Entry[] table = new Entry[size];
 
+
     static class Entry {
         String key;
         Integer value;
