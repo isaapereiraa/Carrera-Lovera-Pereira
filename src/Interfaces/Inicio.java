@@ -138,10 +138,10 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonCsvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCsvActionPerformed
-        ArrayList<Estado> lista = new ArrayList<>();
+
+        Hashtable hash = new Hashtable();
         try {
-            Csv.archivocSV(lista);
-            Csv.imprimir(lista);
+            Csv.leerEstado(hash);
         } catch (IOException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }

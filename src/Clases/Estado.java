@@ -93,7 +93,7 @@ public class Estado {
 
     
     public String toCsv(){
-        return this.habitacion + "," + this.nombre + "," + this.apellido + "," + this.correo + "," + this.genero + "," + this.celular + "," + this.llegada;
+        return "Numero de habitacion: " +this.habitacion+"\n" + "Nombre: " +this.nombre+"\n" + "Apellido: " +this.apellido+"\n" + "Correo: " +this.correo+"\n" + "Genero: " +this.genero+"\n" + "Celular: " +this.celular+"\n" + "Llegada: " +this.llegada;
     }
 
     

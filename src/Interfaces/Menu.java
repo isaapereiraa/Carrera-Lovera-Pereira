@@ -210,7 +210,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonCheckoutActionPerformed
 
     private void BotonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistroActionPerformed
-        JOptionPane.showMessageDialog(null, "Registro");
+        Registro registro = new Registro();
+        registro.setVisible(true);
     }//GEN-LAST:event_BotonRegistroActionPerformed
 
     private void BotonReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReservasActionPerformed

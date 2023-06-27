@@ -4,19 +4,22 @@
  */
 package Estructuras;
 
+import Clases.Estado;
+
 /**
  *Esta clase se encarga de todo lo relacionado a la tabla de dispersion y la implementacion de sus primitivas
  * @author soyis
+ * @param <T>
  * 
  */
-public class Hashtable {
-    private final int size = 16;
+public class Hashtable<T> {
+    private final int size = 35;
     private final Entry[] table = new Entry[size];
 
 
     static class Entry {
         String key;
-        Integer value;
+        Estado value;
         Entry next;
 
         /**
@@ -24,7 +27,7 @@ public class Hashtable {
          * @param key
          * @param value 
          */
-        public Entry(String key, Integer value) {
+        public Entry(String key, Estado value) {
             this.key = key;
             this.value = value;
             this.next = null;
@@ -36,8 +39,8 @@ public class Hashtable {
      * @param key
      * @param value 
      */
-    public void put(String key, Integer value) {
-        int hash = key.hashCode() % size;
+    public void put(String key, Estado value) {
+        int hash = (key.hashCode() & 0x7fffffff) % size;
         Entry entry = table[hash];
 
         if (entry == null) {
@@ -59,8 +62,8 @@ public class Hashtable {
      * @param key
      * @return 
      */
-    public Integer get(String key) {
-        int hash = key.hashCode() % size;
+    public Estado get(String key) {
+        int hash = (key.hashCode() & 0x7fffffff) % size;
         Entry entry = table[hash];
 
         while (entry != null && !entry.key.equals(key)) {
@@ -80,7 +83,7 @@ public class Hashtable {
      * @return 
      */
     public boolean containsKey(String key) {
-        int hash = key.hashCode() % size;
+        int hash = (key.hashCode() & 0x7fffffff) % size;
         Entry entry = table[hash];
 
         while (entry != null && !entry.key.equals(key)) {
@@ -95,7 +98,7 @@ public class Hashtable {
      * @param key 
      */
     public void remove(String key) {
-        int hash = key.hashCode() % size;
+        int hash = (key.hashCode() & 0x7fffffff) % size;
         Entry entry = table[hash];
 
         if (entry == null) {
@@ -116,5 +119,5 @@ public class Hashtable {
             }
         }
     }
-    
+ 
 }
