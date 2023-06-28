@@ -8,7 +8,7 @@ import Clases.Estado;
 
 /**
  *Esta clase se encarga de todo lo relacionado a la tabla de dispersion y la implementacion de sus primitivas
- * @author soyis
+ * @author  isabella, adrian, alejandra
  * @param <T>
  * 
  */

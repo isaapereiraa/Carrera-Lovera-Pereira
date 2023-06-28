@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author soyis
+ * @author  isabella, adrian, alejandra
  */
 public class Menu extends javax.swing.JFrame {
 
@@ -210,12 +210,19 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonCheckoutActionPerformed
 
     private void BotonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistroActionPerformed
+        
         Registro registro = new Registro();
         registro.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_BotonRegistroActionPerformed
 
     private void BotonReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReservasActionPerformed
-        JOptionPane.showMessageDialog(null, "Reserva");
+        
+        Reservas reservas = new Reservas();
+        reservas.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_BotonReservasActionPerformed
 
     private void BotonHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonHistorialActionPerformed

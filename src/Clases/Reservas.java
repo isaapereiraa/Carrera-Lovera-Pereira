@@ -6,7 +6,7 @@ package Clases;
 
 /**
  *Esta clase maneja el constructor, getters y setters de los datos de las reservas
- * @author soyis
+ * @author  isabella, adrian, alejandra
  */
 public class Reservas {
     private String cedula;
@@ -103,5 +103,7 @@ public class Reservas {
         return salida;
     }
     
-    
+    public String toReservas(){
+        return "C.I: " +this.cedula+"\n" + "Nombre: " +this.nombre+"\n" + "Apellido: " +this.apellido+"\n" + "Correo: " +this.correo+"\n" + "Genero: " +this.genero+"\n" + "Tipo de habitación: " +this.tipo_hab+"\n"+ "Celular: " +this.celular+"\n" + "Llegada: " +this.llegada + "Salida: " +this.salida;
+    }
 }
