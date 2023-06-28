@@ -6,7 +6,7 @@ package Estructuras;
 
 /**
  *
- * @author soyis
+ * @author  isabella, adrian, alejandra
  */
 public class ArrayList <T>{
     private T[] array;

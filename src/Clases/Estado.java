@@ -6,7 +6,7 @@ package Clases;
 
 /**
  *Esta clase maneja el constructor, getters y setters de los datos del estado
- * @author soyis
+ * @author  isabella, adrian, alejandra
  */
 public class Estado {
    

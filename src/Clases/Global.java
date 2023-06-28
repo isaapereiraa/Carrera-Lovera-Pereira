@@ -8,7 +8,7 @@ import Estructuras.ABB;
 
 /**
  *Clases y metodos que van a servir a lo largo de todo el proyecto
- * @author soyis
+ * @author  isabella, adrian, alejandra
  */
 public class Global {
     private static Hashtable hashtable;
