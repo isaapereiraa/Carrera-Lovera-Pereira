@@ -86,8 +86,28 @@ public class ABB {
     }
     
     /**
+     * Para verificar si una llave se encuentra o no en el arbol
+     * @param key
+     * @return 
+     */
+    public boolean containsKey(int key) {
+        Nodo aux = raiz;
+        while(aux.llave!=key){
+            if(key<aux.llave){
+                aux = aux.left;
+            } else {
+                aux = aux.right;
+            }
+            if (aux==null){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    /**
      * Metodo para eliminar un nodo del arbol
-     * @param Key
+     * @param key
      * @return 
      */
     public boolean delete(int key){

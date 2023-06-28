@@ -6,6 +6,7 @@ package Interfaces;
 
 import Clases.Estado;
 import Clases.Csv;
+import Estructuras.ABB;
 import Estructuras.ArrayList;
 import Estructuras.Hashtable;
 import java.io.IOException;
@@ -140,8 +141,12 @@ public class Inicio extends javax.swing.JFrame {
     private void BotonCsvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCsvActionPerformed
 
         Hashtable hash = new Hashtable();
+        ABB arbol = new ABB();
         try {
             Csv.leerEstado(hash);
+            Csv.leerReservas(arbol);
+            
+                 
         } catch (IOException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
