@@ -63,9 +63,11 @@ public class Reservas extends javax.swing.JFrame {
         jScrollPane1.setViewportView(Resultado);
 
         jPanel2.setBackground(new java.awt.Color(55, 79, 51));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0)));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
-        BotonBuscar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        BotonBuscar.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        BotonBuscar.setForeground(new java.awt.Color(204, 204, 204));
         BotonBuscar.setText("Buscar");
         BotonBuscar.setBorderPainted(false);
         BotonBuscar.setContentAreaFilled(false);
@@ -124,7 +126,7 @@ public class Reservas extends javax.swing.JFrame {
                         .addGap(47, 47, 47)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1))
-                .addGap(0, 119, Short.MAX_VALUE))
+                .addGap(0, 117, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
