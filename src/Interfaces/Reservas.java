@@ -8,6 +8,7 @@ import Clases.Global;
 import Clases.TextoPredeterminado;
 import javax.swing.JOptionPane;
 import Estructuras.ABB;
+import Estructuras.Nodo;
 
 /**
  *
@@ -156,8 +157,8 @@ public class Reservas extends javax.swing.JFrame {
        
             if (arbol.containsKey(num_cedula)== true){
                 
-                System.out.println("Hay reserva!");
              
+                Resultado.setText(arbol.toString());
                 Cedula.setText(null);
             } else {
                 JOptionPane.showMessageDialog(null, "No existe una reservación con estos datos");

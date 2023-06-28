@@ -7,11 +7,9 @@ import Estructuras.ABB;
 import Estructuras.ArrayList;
 import Estructuras.Hashtable;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Scanner;
 
 /**
  *Esta clase se encarga de las lecturas de los archivos csv y de guardar los datos en el hashtable y ABB
@@ -96,21 +94,24 @@ public class Csv {
             linea = br.readLine();
             while ((linea = br.readLine()) != null){
                 String[] datos = linea.split(",");
-                String cedula = datos[0];
-                String num = cedula.replaceAll(",", "");
+                String cedula = datos[0]+datos[1]+datos[2];
+                String nombre = datos[3];
+                String apellido = datos[4];
+                String correo = datos[5];
+                String genero = datos[6];
+                String tipo_hab = datos[7];
+                String celular = datos[8];
+                String llegada = datos[9];
+                String salida = datos[10];
+                Reservas llamada = new Reservas(cedula, nombre, apellido, correo, genero, tipo_hab, celular, llegada, salida);
+                
+                String keyCedula = llamada.getCedula();
+                String num = keyCedula.replaceAll(",", "");
                 String numero = Global.removeDoubleQuotes(num);
                 int num_cedula = Integer.parseInt(Global.removeDoubleQuotes(numero));
-                String nombre = datos[1];
-                String apellido = datos[2];
-                String correo = datos[3];
-                String genero = datos[4];
-                String tipo_hab = datos[5];
-                String celular = datos[6];
-                String llegada = datos[7];
-                String salida = datos[8];
-                Reservas llamada = new Reservas(cedula, nombre, apellido, correo, genero, tipo_hab, celular, llegada, salida);
                 clientes.insert(num_cedula, llamada);
                 Global.setABB(clientes);
+             
 
             }
         } catch (IOException e){
@@ -118,16 +119,6 @@ public class Csv {
         }
     }
     
-    public static void imprimir(ArrayList<Estado> clientes) {
-        for (int i=0; i<clientes.size(); i++){
-            System.out.println("Numero de habitacion: " + clientes.get(i).getHabitacion());
-            System.out.println("Nombre: " + clientes.get(i).getNombre());
-            System.out.println("Apellido: " + clientes.get(i).getApellido());
-            System.out.println("----------------------------------");
-        }
-    }
-
-
 
 
 }

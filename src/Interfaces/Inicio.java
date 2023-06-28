@@ -6,6 +6,7 @@ package Interfaces;
 
 import Clases.Estado;
 import Clases.Csv;
+import Clases.Global;
 import Estructuras.ABB;
 import Estructuras.ArrayList;
 import Estructuras.Hashtable;
@@ -146,6 +147,7 @@ public class Inicio extends javax.swing.JFrame {
             Csv.leerEstado(hash);
             Csv.leerReservas(arbol);
             
+         
                  
         } catch (IOException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
