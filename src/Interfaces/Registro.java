@@ -141,8 +141,8 @@ public class Registro extends javax.swing.JFrame {
         }
         else{
             Hashtable hash = Global.getHash();
-            String name = NombreCliente.getText();
-            String lastname = ApellidoCliente.getText();
+            String name = Global.capitalizar(NombreCliente.getText());
+            String lastname = Global.capitalizar(ApellidoCliente.getText());
             String fullname = name + lastname;
 
             if (hash.containsKey(fullname)== true){
