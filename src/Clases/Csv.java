@@ -6,6 +6,7 @@ package Clases;
 import Estructuras.ABB;
 import Estructuras.ArrayList;
 import Estructuras.Hashtable;
+import Estructuras.Nodo;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -34,7 +35,8 @@ public class Csv {
                 String celular = datos[5];
                 String llegada = datos[6];
                 Estado estado = new Estado(hab, nombre, apellido, correo, genero, celular, llegada);
-                clientes.put(fullname, estado);
+                Nodo est = new Nodo(estado);
+                clientes.put(fullname, est);
                 Global.setHash(clientes);
 
             }
@@ -43,24 +45,23 @@ public class Csv {
         }
     }
     
-    public static void leerHabitaciones(ArrayList<Estado> clientes) throws FileNotFoundException, IOException{
-        Hashtable hash = new Hashtable();
-        try (BufferedReader br = new BufferedReader(new FileReader("test\\Habitaciones.csv"))){
-            String linea;
-            linea = br.readLine();
-            while ((linea = br.readLine()) != null){
-                String[] datos = linea.split(",");
-                int hab = Integer.parseInt(datos[0]);
-                String nombre = datos[1];
-                String apellido = datos[2];
-                Estado llamada = new Estado(hab, nombre, apellido);
-                clientes.add(llamada);
-//                hash.put(client, hab);
-            }
-        } catch (IOException e){
-            System.out.println("Archivo no encontrado");
-        }
-    }
+//    public static void leerHabitaciones(Hashtable <Habitacion> habitacion) throws FileNotFoundException, IOException{
+//        try (BufferedReader br = new BufferedReader(new FileReader("test\\Habitaciones.csv"))){
+//            String linea;
+//            linea = br.readLine();
+//            while ((linea = br.readLine()) != null){
+//                String[] datos = linea.split(",");
+//                String hab = datos[0];
+//                String tipo_hab = datos[1];
+//                String piso = datos[2];
+//                Habitacion habinfo = new Habitacion(hab, tipo_hab, piso);
+//                habitacion.put(hab, habinfo);
+//                Global.setHash(habitacion);
+//            }
+//        } catch (IOException e){
+//            System.out.println("Archivo no encontrado");
+//        }
+//    }
     
     public static void leerHistorico(ArrayList<Estado> clientes) throws FileNotFoundException, IOException{
         Hashtable hash = new Hashtable();

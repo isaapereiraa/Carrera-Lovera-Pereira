@@ -14,12 +14,12 @@ import Estructuras.Nodo;
  *
  * @author  isabella, adrian, alejandra
  */
-public class Reservas extends javax.swing.JFrame {
+public class Checkin extends javax.swing.JFrame {
 
     /**
      * Creates new form Reservas
      */
-    public Reservas() {
+    public Checkin() {
         initComponents();
         this.setLocationRelativeTo(null);
         TextoPredeterminado cedula = new TextoPredeterminado("Numero de cedula.Ej: 14597844", Cedula);
@@ -50,7 +50,7 @@ public class Reservas extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Búsqueda de reservación");
+        jLabel1.setText("Check in");
 
         Cedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,8 +158,11 @@ public class Reservas extends javax.swing.JFrame {
             int num_cedula = Integer.parseInt(cedulaTexto);
        
             if (arbol.containsKey(num_cedula)== true){
-                
              
+                String tipo_hab = arbol.obtenerTipoHab(num_cedula);
+                                
+                
+                
                 Resultado.setText(arbol.toString());
                 Cedula.setText(null);
             } else {
@@ -186,20 +189,21 @@ public class Reservas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Reservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Checkin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Reservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Checkin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Reservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Checkin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Reservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Checkin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Reservas().setVisible(true);
+                new Checkin().setVisible(true);
             }
         });
     }

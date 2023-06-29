@@ -19,7 +19,7 @@ public class Reservas {
     private String llegada;
     private String salida;
     
-     public Reservas(String cedula, String nombre, String apellido, String correo, String genero, String tipo_hab, String celular, String llegada, String salida) {
+    public Reservas(String cedula, String nombre, String apellido, String correo, String genero, String tipo_hab, String celular, String llegada, String salida) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;

@@ -4,8 +4,6 @@
  */
 package Estructuras;
 
-import Clases.Estado;
-
 /**
  *Esta clase se encarga de todo lo relacionado a la tabla de dispersion y la implementacion de sus primitivas
  * @author  isabella, adrian, alejandra
@@ -17,9 +15,9 @@ public class Hashtable<T> {
     private final Entry[] table = new Entry[size];
 
 
-    static class Entry {
+    static class Entry <T> {
         String key;
-        Estado value;
+        Nodo<T> value;
         Entry next;
 
         /**
@@ -27,7 +25,7 @@ public class Hashtable<T> {
          * @param key
          * @param value 
          */
-        public Entry(String key, Estado value) {
+        public Entry(String key, Nodo <T> value) {
             this.key = key;
             this.value = value;
             this.next = null;
@@ -39,7 +37,7 @@ public class Hashtable<T> {
      * @param key
      * @param value 
      */
-    public void put(String key, Estado value) {
+    public void put(String key, Nodo <T> value) {
         int hash = (key.hashCode() & 0x7fffffff) % size;
         Entry entry = table[hash];
 
@@ -62,7 +60,7 @@ public class Hashtable<T> {
      * @param key
      * @return 
      */
-    public Estado get(String key) {
+        public Nodo<T> get(String key) {
         int hash = (key.hashCode() & 0x7fffffff) % size;
         Entry entry = table[hash];
 

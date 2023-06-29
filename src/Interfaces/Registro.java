@@ -7,7 +7,8 @@ import Clases.TextoPredeterminado;
 import javax.swing.JOptionPane;
 import Clases.Global;
 import Estructuras.Hashtable;
-
+import Clases.Estado;
+import Estructuras.Nodo;
 /**
  *
  * @author  isabella, adrian, alejandra
@@ -59,10 +60,12 @@ public class Registro extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0)));
         jPanel2.setForeground(new java.awt.Color(255, 204, 153));
 
-        Buscar.setFont(Buscar.getFont().deriveFont(Buscar.getFont().getSize()+2f));
+        Buscar.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        Buscar.setForeground(new java.awt.Color(204, 204, 204));
         Buscar.setText("Buscar");
-        Buscar.setBorderPainted(false);
+        Buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         Buscar.setContentAreaFilled(false);
+        Buscar.setFocusTraversalPolicyProvider(true);
         Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarActionPerformed(evt);
@@ -141,10 +144,10 @@ public class Registro extends javax.swing.JFrame {
             String name = NombreCliente.getText();
             String lastname = ApellidoCliente.getText();
             String fullname = name + lastname;
-       
+
             if (hash.containsKey(fullname)== true){
-                String resultado = hash.get(fullname).toEstado();
-                ResultadoBusqueda.setText(resultado);
+                Nodo <Estado> resultado = hash.get(fullname);
+                ResultadoBusqueda.setText(resultado.getData().toEstado());
                 NombreCliente.setText(null);
                 ApellidoCliente.setText(null);
             } else {
@@ -152,7 +155,7 @@ public class Registro extends javax.swing.JFrame {
                 NombreCliente.setText(null);
                 ApellidoCliente.setText(null);
             }
-            } 
+        }
     }//GEN-LAST:event_BuscarActionPerformed
 
     /**
