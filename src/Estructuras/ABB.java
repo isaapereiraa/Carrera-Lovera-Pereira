@@ -6,7 +6,7 @@ package Estructuras;
 
 /**
  *Implementacion de las primitivas de un arbol binario de busqueda
- * @author soyis
+ * @author  isabella, adrian, alejandra
  */
 public class ABB {
     

@@ -10,7 +10,7 @@ import Estructuras.Hashtable;
 
 /**
  *
- * @author soyis
+ * @author  isabella, adrian, alejandra
  */
 public class Registro extends javax.swing.JFrame {
 

@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author soyis
+ * @author  isabella, adrian, alejandra
  */
 public class Inicio extends javax.swing.JFrame {
 

@@ -6,7 +6,7 @@ package Clases;
 
 /**
  *Esta clase maneja el constructor, getters y setters de los datos de las reservas
- * @author soyis
+ * @author  isabella, adrian, alejandra
  */
 public class Reservas {
     private String cedula;

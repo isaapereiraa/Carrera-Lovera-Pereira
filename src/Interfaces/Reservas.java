@@ -12,7 +12,7 @@ import Estructuras.Nodo;
 
 /**
  *
- * @author soyis
+ * @author  isabella, adrian, alejandra
  */
 public class Reservas extends javax.swing.JFrame {
 
@@ -22,7 +22,7 @@ public class Reservas extends javax.swing.JFrame {
     public Reservas() {
         initComponents();
         this.setLocationRelativeTo(null);
-        TextoPredeterminado cedula = new TextoPredeterminado("Numero de cedula: ", Cedula);
+        TextoPredeterminado cedula = new TextoPredeterminado("Numero de cedula.Ej: 14597844", Cedula);
         
     }
 

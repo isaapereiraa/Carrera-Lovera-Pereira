@@ -13,7 +13,7 @@ import java.io.IOException;
 
 /**
  *Esta clase se encarga de las lecturas de los archivos csv y de guardar los datos en el hashtable y ABB
- * @author soyis
+ * @author  isabella, adrian, alejandra
  */
 public class Csv {
     
