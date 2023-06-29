@@ -7,7 +7,8 @@ import Clases.TextoPredeterminado;
 import javax.swing.JOptionPane;
 import Clases.Global;
 import Estructuras.Hashtable;
-
+import Clases.Estado;
+import Estructuras.Nodo;
 /**
  *
  * @author  isabella, adrian, alejandra
@@ -145,8 +146,8 @@ public class Registro extends javax.swing.JFrame {
             String fullname = name + lastname;
 
             if (hash.containsKey(fullname)== true){
-                String resultado = hash.get(fullname).toEstado();
-                ResultadoBusqueda.setText(resultado);
+                Nodo <Estado> resultado = hash.get(fullname);
+                ResultadoBusqueda.setText(resultado.getData().toEstado());
                 NombreCliente.setText(null);
                 ApellidoCliente.setText(null);
             } else {
