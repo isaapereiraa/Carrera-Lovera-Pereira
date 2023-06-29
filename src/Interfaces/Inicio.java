@@ -141,15 +141,14 @@ public class Inicio extends javax.swing.JFrame {
 
         Hashtable hash = new Hashtable();
         try {
-            Csv.leerEstado(hash);
+            Csv.leerEstado(hash); 
+            Menu menu = new Menu();
+            menu.setVisible(true);
+            this.setVisible(false);
         } catch (IOException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        Menu menu = new Menu();
-        menu.setVisible(true);
 
-        this.setVisible(false);
     }//GEN-LAST:event_BotonCsvActionPerformed
 
     /**

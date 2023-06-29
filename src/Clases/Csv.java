@@ -21,7 +21,7 @@ public class Csv {
     
     
     public static void leerEstado(Hashtable<Estado> clientes) throws FileNotFoundException, IOException{
-        try (BufferedReader br = new BufferedReader(new FileReader("test\\Estado.csv"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("test//Estado.csv"))){
             String linea;
             linea = br.readLine();
             while ((linea = br.readLine()) != null){
@@ -46,7 +46,7 @@ public class Csv {
     
     public static void leerHabitaciones(ArrayList<Estado> clientes) throws FileNotFoundException, IOException{
         Hashtable hash = new Hashtable();
-        try (BufferedReader br = new BufferedReader(new FileReader("test\\Habitaciones.csv"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("test//Habitaciones.csv"))){
             String linea;
             linea = br.readLine();
             while ((linea = br.readLine()) != null){
@@ -65,7 +65,7 @@ public class Csv {
     
     public static void leerHistorico(ArrayList<Estado> clientes) throws FileNotFoundException, IOException{
         Hashtable hash = new Hashtable();
-        try (BufferedReader br = new BufferedReader(new FileReader("test\\Historico.csv"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("test//Historico.csv"))){
             String linea;
             linea = br.readLine();
             while ((linea = br.readLine()) != null){
@@ -84,7 +84,7 @@ public class Csv {
     
     public static void leerReservas(ArrayList<Estado> clientes) throws FileNotFoundException, IOException{
         Hashtable hash = new Hashtable();
-        try (BufferedReader br = new BufferedReader(new FileReader("test\\Reservas.csv"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("test//Reservas.csv"))){
             String linea;
             linea = br.readLine();
             while ((linea = br.readLine()) != null){
