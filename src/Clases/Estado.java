@@ -6,7 +6,7 @@ package Clases;
 
 /**
  *Esta clase maneja el constructor, getters y setters de los datos del estado
- * @author soyis
+ * @author  isabella, adrian, alejandra
  */
 public class Estado {
    
@@ -92,7 +92,7 @@ public class Estado {
     }
 
     
-    public String toCsv(){
+    public String toEstado(){
         return "Numero de habitacion: " +this.habitacion+"\n" + "Nombre: " +this.nombre+"\n" + "Apellido: " +this.apellido+"\n" + "Correo: " +this.correo+"\n" + "Genero: " +this.genero+"\n" + "Celular: " +this.celular+"\n" + "Llegada: " +this.llegada;
     }
 

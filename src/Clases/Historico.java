@@ -6,7 +6,7 @@ package Clases;
 
 /**
  *Esta clase maneja el constructor, getters y setters de los datos del historico
- * @author soyis
+ * @author  isabella, adrian, alejandra
  */
 public class Historico {
     private String cedula;
