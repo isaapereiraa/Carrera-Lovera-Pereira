@@ -74,7 +74,7 @@ public class Csv {
                 String apellido = datos[2];
                 Estado llamada = new Estado(hab, nombre, apellido);
                 clientes.add(llamada);
-//                hash.put(client, hab);
+                
             }
         } catch (IOException e){
             System.out.println("Archivo no encontrado");

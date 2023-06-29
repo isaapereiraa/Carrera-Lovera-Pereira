@@ -146,17 +146,17 @@ public class Inicio extends javax.swing.JFrame {
         try {
             Csv.leerEstado(hash);
             Csv.leerReservas(arbol);
+            Menu menu = new Menu();
             
+            menu.setVisible(true);
+
+            this.setVisible(false);
          
                  
         } catch (IOException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        Menu menu = new Menu();
-        menu.setVisible(true);
-
-        this.setVisible(false);
+       
     }//GEN-LAST:event_BotonCsvActionPerformed
 
     /**
