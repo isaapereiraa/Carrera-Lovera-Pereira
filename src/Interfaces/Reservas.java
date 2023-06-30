@@ -168,7 +168,7 @@ public class Reservas extends javax.swing.JFrame {
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
         String cedulaTexto = Cedula.getText().replaceAll(",", "");
         
-        if (Global.isNumeric(cedulaTexto)==false && "".equals(Cedula.getText())) {
+        if (Global.isNumeric(cedulaTexto)==false || "".equals(Cedula.getText())) {
             JOptionPane.showMessageDialog(null, "Por favor ingrese un número de cédula valido");
         }
         else{

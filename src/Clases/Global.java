@@ -87,7 +87,7 @@ public class Global {
     if (palabra == null || palabra.isEmpty()) {
         return palabra;
     } else {
-        return palabra.substring(0, 1).toUpperCase() + palabra.substring(1).toLowerCase();
+       return palabra.substring(0, 1).toUpperCase() + palabra.substring(1);
     }
     }   
     
