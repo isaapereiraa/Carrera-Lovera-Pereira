@@ -55,13 +55,18 @@ public class Global {
         }
         
         try {
-            Integer.parseInt(texto);
+            Integer.valueOf(texto);
             return true;
         } catch (NumberFormatException e){
             return false;
         }
     }
     
+    /**
+     * Elimina las doble comillas de un string 
+     * @param input
+     * @return 
+     */
     public static String removeDoubleQuotes(String input){
         StringBuilder sb = new StringBuilder();
         char[] tab = input.toCharArray();
@@ -71,7 +76,20 @@ public class Global {
             }
         }
         return sb.toString();
-        
     } 
+    
+    /**
+     * Esta funcion se encarga de capitalizar un string
+     * @param palabra
+     * @return 
+     */
+    public static String capitalizar(String palabra) {
+    if (palabra == null || palabra.isEmpty()) {
+        return palabra;
+    } else {
+        return palabra.substring(0, 1).toUpperCase() + palabra.substring(1).toLowerCase();
+    }
+    }   
+    
     
 }

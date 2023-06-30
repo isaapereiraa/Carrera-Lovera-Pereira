@@ -8,6 +8,7 @@ import Estructuras.ArrayList;
 import Estructuras.Hashtable;
 import Estructuras.Nodo;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -21,7 +22,8 @@ public class Csv {
     
     
     public static void leerEstado(Hashtable<Estado> clientes) throws FileNotFoundException, IOException{
-        try (BufferedReader br = new BufferedReader(new FileReader("test\\Estado.csv"))){
+        String filePath = "test" + File.separator + "Estado.csv";
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
             String linea;
             linea = br.readLine();
             while ((linea = br.readLine()) != null){
@@ -64,8 +66,8 @@ public class Csv {
 //    }
     
     public static void leerHistorico(ArrayList<Estado> clientes) throws FileNotFoundException, IOException{
-        Hashtable hash = new Hashtable();
-        try (BufferedReader br = new BufferedReader(new FileReader("test\\Historico.csv"))){
+        String filePath = "test" + File.separator + "Historico.csv";
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
             String linea;
             linea = br.readLine();
             while ((linea = br.readLine()) != null){
@@ -75,7 +77,7 @@ public class Csv {
                 String apellido = datos[2];
                 Estado llamada = new Estado(hab, nombre, apellido);
                 clientes.add(llamada);
-//                hash.put(client, hab);
+                
             }
         } catch (IOException e){
             System.out.println("Archivo no encontrado");
@@ -89,8 +91,8 @@ public class Csv {
      * @throws IOException
      */
     public static void leerReservas(ABB clientes) throws FileNotFoundException, IOException{
-        
-        try (BufferedReader br = new BufferedReader(new FileReader("test\\Reservas.csv"))){
+        String filePath = "test" + File.separator + "Reservas.csv";
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
             String linea;
             linea = br.readLine();
             while ((linea = br.readLine()) != null){

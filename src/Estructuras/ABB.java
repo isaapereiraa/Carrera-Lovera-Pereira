@@ -229,8 +229,8 @@ public class ABB {
         return reemplazo;
     }
     
-    public String getReserva(int key){
-       Nodo nodo = find(key);
+     public String getReserva(int key){
+        Nodo nodo = find(key);
         if(nodo != null && nodo.contenido instanceof Reservas){
             Reservas reserva = (Reservas) nodo.contenido;
             return reserva.toReservas();
