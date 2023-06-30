@@ -176,8 +176,7 @@ public class Reservas extends javax.swing.JFrame {
             int num_cedula = Integer.parseInt(cedulaTexto);
        
             if (arbol.containsKey(num_cedula)== true){
-                
-             
+                             
                 Resultado.setText(arbol.getReserva(num_cedula));
                 Cedula.setText(null);
             } else {

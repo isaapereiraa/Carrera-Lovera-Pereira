@@ -47,23 +47,24 @@ public class Csv {
         }
     }
     
-//    public static void leerHabitaciones(Hashtable <Habitacion> habitacion) throws FileNotFoundException, IOException{
-//        try (BufferedReader br = new BufferedReader(new FileReader("test\\Habitaciones.csv"))){
-//            String linea;
-//            linea = br.readLine();
-//            while ((linea = br.readLine()) != null){
-//                String[] datos = linea.split(",");
-//                String hab = datos[0];
-//                String tipo_hab = datos[1];
-//                String piso = datos[2];
-//                Habitacion habinfo = new Habitacion(hab, tipo_hab, piso);
-//                habitacion.put(hab, habinfo);
-//                Global.setHash(habitacion);
-//            }
-//        } catch (IOException e){
-//            System.out.println("Archivo no encontrado");
-//        }
-//    }
+    public static void leerHabitaciones(Hashtable <Habitacion> habitacion) throws FileNotFoundException, IOException{
+        try (BufferedReader br = new BufferedReader(new FileReader("test\\Habitaciones.csv"))){
+            String linea;
+            linea = br.readLine();
+            while ((linea = br.readLine()) != null){
+                String[] datos = linea.split(",");
+                int num_hab = Integer.parseInt(datos[0]);
+                String tipo_hab = datos[1];
+                String piso = datos[2];
+                Habitacion habinfo = new Habitacion(num_hab, tipo_hab, piso);
+                Nodo hab1 = new Nodo(habinfo);
+                habitacion.put(datos[0], hab1);
+                Global.setHash(habitacion);
+            }
+        } catch (IOException e){
+            System.out.println("Archivo no encontrado");
+        }
+    }
     
     public static void leerHistorico(ArrayList<Estado> clientes) throws FileNotFoundException, IOException{
         String filePath = "test" + File.separator + "Historico.csv";

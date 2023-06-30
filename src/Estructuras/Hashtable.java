@@ -4,6 +4,9 @@
  */
 package Estructuras;
 
+import Clases.Estado;
+import Clases.Habitacion;
+
 /**
  *Esta clase se encarga de todo lo relacionado a la tabla de dispersion y la implementacion de sus primitivas
  * @author  isabella, adrian, alejandra
@@ -74,7 +77,45 @@ public class Hashtable<T> {
             return entry.value;
         }
     }
-
+        
+        /**
+     * Retorna una lista con las claves de la tabla hash
+     * @return
+     */
+    public List<T> getKeys() {
+        List<T> keys = new List<>();
+        
+        for (Entry entry : table) {
+            while (entry != null) {
+                Nodo <Estado> nodo = entry.value ;
+                keys.insertLast((T)nodo.getData().getHabitacion());
+                entry = entry.next;
+            }
+        }
+        return keys;
+    }
+    
+         /**
+     * Retorna una lista con las claves de la tabla hash
+     * @return
+     */
+    public List<T> getKeys1(String tipo_hab) {
+        List<T> keys = new List<>();
+        
+        for (Entry entry : table) {
+            while (entry != null) {
+                
+                Nodo <Habitacion> nodo = entry.value ;
+                String aux = nodo.getData().getTipo();
+                if (aux.equals(tipo_hab)){
+                keys.insertLast((T)nodo.getData().getNumero());
+                }
+                entry = entry.next;
+            }
+        }
+        return keys;
+    }
+    
     /**
      * Para verificar si una llave se encuentra o no en la tabla
      * @param key

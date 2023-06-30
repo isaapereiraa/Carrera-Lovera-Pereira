@@ -4,11 +4,20 @@
  */
 package Interfaces;
 
+import Clases.Csv;
+import Clases.Estado;
 import Clases.Global;
+import Clases.Habitacion;
 import Clases.TextoPredeterminado;
 import javax.swing.JOptionPane;
 import Estructuras.ABB;
+import Estructuras.Hashtable;
+import Estructuras.List;
 import Estructuras.Nodo;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -173,14 +182,27 @@ public class Checkin extends javax.swing.JFrame {
         }
         else{
             ABB arbol = Global.getABB();
+            Hashtable hash = Global.getHash();
+            Hashtable hash1 = new Hashtable();
+             try {
+                    Csv.leerHabitaciones(hash1);
+                } catch (IOException ex) {
+                    Logger.getLogger(Checkin.class.getName()).log(Level.SEVERE, null, ex);
+                }
             int num_cedula = Integer.parseInt(cedulaTexto);
-       
+            
             if (arbol.containsKey(num_cedula)== true){
-             
-                String tipo_hab = arbol.obtenerTipoHab(num_cedula);
-                                
+                String tipo_hab = arbol.obtenerTipoHab(num_cedula); //tipo de habitacion de la reserva
+                List <Estado> hab_ocupadas = hash.getKeys();//Lista con habitaciones ocupadas
+                List <Habitacion>  hab = hash1.getKeys1(tipo_hab); //Lista de habitaciones en general, pero del tipo de la reserva
+
+                hab_ocupadas.imprimir();
+                System.out.println(  hab_ocupadas.getLength());
                 
+                hab.imprimir();
+                System.out.println(  hab.getLength());
                 
+         
                 Resultado.setText(arbol.toString());
                 Cedula.setText(null);
             } else {

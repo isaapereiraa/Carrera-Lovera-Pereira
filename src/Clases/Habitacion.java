@@ -9,17 +9,17 @@ package Clases;
  * @author  isabella, adrian, alejandra
  */
 public class Habitacion {
-    private String numero;
+    private int numero;
     private String tipo;
     private String piso;
 
-    public Habitacion(String numero, String tipo, String piso) {
+    public Habitacion(int numero, String tipo, String piso) {
         this.numero = numero;
         this.tipo = tipo;
         this.piso = piso;
     }
 
-    public String getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 
@@ -31,7 +31,7 @@ public class Habitacion {
         return piso;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
@@ -42,6 +42,8 @@ public class Habitacion {
     public void setPiso(String piso) {
         this.piso = piso;
     }
-    
+    public String tohabitacion(){
+        return "Numero de habitración: " + this.numero;
+    }
     
 }

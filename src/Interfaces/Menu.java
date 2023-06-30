@@ -230,7 +230,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonHistorialActionPerformed
 
     private void BotonCheckinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCheckinActionPerformed
-        JOptionPane.showMessageDialog(null, "Bienvenidos");
+        Checkin checkin = new Checkin();
+        checkin.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BotonCheckinActionPerformed
 
     /**
