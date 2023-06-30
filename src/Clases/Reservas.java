@@ -104,6 +104,6 @@ public class Reservas {
     }
     
     public String toReservas(){
-        return "C.I: " +this.cedula+"\n" + "Nombre: " +this.nombre+"\n" + "Apellido: " +this.apellido+"\n" + "Correo: " +this.correo+"\n" + "Genero: " +this.genero+"\n" + "Tipo de habitación: " +this.tipo_hab+"\n"+ "Celular: " +this.celular+"\n" + "Llegada: " +this.llegada + "Salida: " +this.salida;
+        return "C.I: " +this.cedula+"\n" + "Nombre: " +this.nombre+"\n" + "Apellido: " +this.apellido+"\n" + "Correo: " +this.correo+"\n" + "Genero: " +this.genero+"\n" + "Tipo de habitación: " +this.tipo_hab+"\n"+ "Celular: " +this.celular+"\n" + "Llegada: " +this.llegada +"\n"+ "Salida: " +this.salida;
     }
 }
