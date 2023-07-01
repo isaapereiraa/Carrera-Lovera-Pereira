@@ -157,13 +157,19 @@ public class Habitaciones extends javax.swing.JFrame {
 
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
     String habitacionTexto = inputHabitacion.getText().replaceAll(",", "");
-
+    ABB arbol2 = new ABB();
+        try {
+            Csv.leerHistorico(arbol2);
+        } catch (IOException ex) {
+            Logger.getLogger(Habitaciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
     if (!habitacionTexto.matches("\\d+")) {
         JOptionPane.showMessageDialog(null, "Por favor ingrese un número de habitación válido");
     } else {
-        ABB arbol2= Global.getABB();
+        arbol2= Global.getABB();
         int num_hab = Integer.parseInt(habitacionTexto);
-        Resultado.setText(arbol2.getClientesPorHabitacion(num_hab).toString());
+        Resultado.setText(arbol2.getClientesPorHabitacion(num_hab).elementsToString());
         }
     }//GEN-LAST:event_BotonBuscarActionPerformed
 
