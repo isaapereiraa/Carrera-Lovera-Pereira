@@ -329,7 +329,7 @@ public class ABB {
         return clientes;
     }
 
-    private void getClientesPorHabitacionRec(Nodo nodo, int num_habitacion, ArrayList<Historico> clientes){
+    private void getClientesPorHabitacionRec(Nodo nodo, int num_habitacion, ArrayList clientes){
         if (nodo == null || nodo.contenido == null){
             return;
         }

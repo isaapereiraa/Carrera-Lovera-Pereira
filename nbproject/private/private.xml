@@ -5,9 +5,11 @@
         <group>
             <file>file:/C:/Users/soyis/OneDrive/Escritorio/COLLEGE/Estructura%20de%20datos/Proyecto%202/Proyecto-Hotel/src/Clases/Csv.java</file>
             <file>file:/C:/Users/soyis/OneDrive/Escritorio/COLLEGE/Estructura%20de%20datos/Proyecto%202/Proyecto-Hotel/src/Clases/Main.java</file>
-            <file>file:/C:/Users/soyis/OneDrive/Escritorio/COLLEGE/Estructura%20de%20datos/Proyecto%202/Proyecto-Hotel/test/Reservas.csv</file>
-            <file>file:/C:/Users/soyis/OneDrive/Escritorio/COLLEGE/Estructura%20de%20datos/Proyecto%202/Proyecto-Hotel/src/Clases/Global.java</file>
-            <file>file:/C:/Users/soyis/OneDrive/Escritorio/COLLEGE/Estructura%20de%20datos/Proyecto%202/Proyecto-Hotel/test/Estado.csv</file>
+            <file>file:/C:/Users/soyis/OneDrive/Escritorio/COLLEGE/Estructura%20de%20datos/Proyecto%202/Proyecto-Hotel/src/Interfaces/Checkin.java</file>
+            <file>file:/C:/Users/soyis/OneDrive/Escritorio/COLLEGE/Estructura%20de%20datos/Proyecto%202/Proyecto-Hotel/src/Clases/Reservas.java</file>
+            <file>file:/C:/Users/soyis/OneDrive/Escritorio/COLLEGE/Estructura%20de%20datos/Proyecto%202/Proyecto-Hotel/src/Estructuras/ABB.java</file>
+            <file>file:/C:/Users/soyis/OneDrive/Escritorio/COLLEGE/Estructura%20de%20datos/Proyecto%202/Proyecto-Hotel/src/Interfaces/Inicio.java</file>
+            <file>file:/C:/Users/soyis/OneDrive/Escritorio/COLLEGE/Estructura%20de%20datos/Proyecto%202/Proyecto-Hotel/src/Interfaces/Habitaciones.java</file>
             <file>file:/C:/Users/soyis/OneDrive/Escritorio/COLLEGE/Estructura%20de%20datos/Proyecto%202/Proyecto-Hotel/src/Interfaces/Reservas.java</file>
         </group>
     </open-files>
