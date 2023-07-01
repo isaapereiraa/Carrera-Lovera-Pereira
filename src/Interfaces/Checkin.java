@@ -198,7 +198,7 @@ public class Checkin extends javax.swing.JFrame {
                 if(!habdisponibles.isEmpty()){
                     Integer habfinal = habdisponibles.get(0);
                     Clases.Reservas res = arbol.getContenido(num_cedula);
-                    Estado estado = new Estado(habfinal,res.getNombre(),res.getApellido(),res.getGenero(),res.getGenero(),res.getCelular(),res.getLlegada());
+                    Estado estado = new Estado(habfinal,res.getNombre(),res.getApellido(),res.getCorreo(),res.getGenero(),res.getCelular(),res.getLlegada());
                     Nodo est = new Nodo(estado);
                     hash.put(res.getNombre()+res.getApellido(), est);
                     Global.setHash(hash);

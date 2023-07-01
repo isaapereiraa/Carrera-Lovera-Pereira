@@ -167,25 +167,7 @@ public class List <T> {
             length--;
         }
     }
-    public boolean remove(T elemento) {
-        Nodo<T> actual = head;
-        Nodo<T> anterior = null;
-
-        while (actual != null) {
-            if (actual.getData().equals(elemento)) {
-                if (anterior == null) {
-                    head = actual.getNext();
-                } else {
-                    anterior.setNext(actual.getNext());
-                }
-                length--;
-                return true;
-            }
-            anterior = actual;
-            actual = actual.getNext();
-        }
-        return false;
-    }
+    
     /**
     * Obtener Elemento
     * Metodo que recorre la lista para obterner el elemento de un nodo determinado
