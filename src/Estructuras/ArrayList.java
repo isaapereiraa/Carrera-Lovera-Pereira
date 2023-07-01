@@ -93,5 +93,14 @@ public class ArrayList <T>{
         }
         return sb.toString();
     }
+    
+    public boolean contains(T element) {
+        for (int i = 0; i < size; i++) {
+            if (array[i].equals(element)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

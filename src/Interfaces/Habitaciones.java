@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 public class Habitaciones extends javax.swing.JFrame {
 
     /**
-     * Creates new form Reservas
+     * Creates new form Habitaciones
      */
     public Habitaciones() {
         initComponents();
@@ -167,7 +167,7 @@ public class Habitaciones extends javax.swing.JFrame {
     if (!habitacionTexto.matches("\\d+")) {
         JOptionPane.showMessageDialog(null, "Por favor ingrese un número de habitación válido");
     } else {
-        arbol2= Global.getABB();
+//        arbol2= Global.getABB();
         int num_hab = Integer.parseInt(habitacionTexto);
         Resultado.setText(arbol2.getClientesPorHabitacion(num_hab).elementsToString());
         }

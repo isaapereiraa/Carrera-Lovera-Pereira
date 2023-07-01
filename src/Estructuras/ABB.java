@@ -314,26 +314,38 @@ public class ABB {
 //        }
 //    }
 
-    public ArrayList<Historico> getClientesPorHabitacion(int num_habitacion){
-        ArrayList<Historico> clientes = new ArrayList<>();
+    public ArrayList<Historico> getClientesPorHabitacion(int num_habitacion) {
+        ArrayList<Historico> clientes = new ArrayList<Historico>();
+        System.out.println("Buscando objetos Historico con el número de habitación " + num_habitacion);
         getClientesPorHabitacionRec(raiz, num_habitacion, clientes);
+        System.out.println("Se encontraron " + clientes.size() + " objetos Historico con el número de habitación " + num_habitacion);
         return clientes;
     }
 
-    private void getClientesPorHabitacionRec(Nodo nodo, int num_habitacion, ArrayList<Historico> clientes){
-        if (nodo == null || nodo.contenido == null){
-            return;
-        }
-        if (nodo.contenido instanceof Historico){
+    private void getClientesPorHabitacionRec(Nodo nodo, int num_habitacion, ArrayList<Historico> clientes) {
+    if (nodo != null) {
+        if (nodo.contenido instanceof Historico) {
             Historico historico = (Historico) nodo.contenido;
-            if (historico.getNum_hab().equals(num_habitacion)){
-                clientes.add(historico);
+            System.out.println("Encontrado objeto Historico con el número de habitación " + historico.getNum_hab());
+            if (historico.getNum_hab() == num_habitacion) {
+                if (!clientes.contains(historico)) { // verifica si el objeto ya está en la lista
+                        clientes.add(historico);
+                    }
+                }
             }
-        }
-        getClientesPorHabitacionRec(nodo.left, num_habitacion, clientes);
-        getClientesPorHabitacionRec(nodo.right, num_habitacion, clientes);
+            if(nodo.left == null && nodo.right == null) {
+                // detiene la recursión si se llega a una hoja
+                return;
+            }else if (nodo.left != null) {
+                getClientesPorHabitacionRec(nodo.left, num_habitacion, clientes);
+            }else if (nodo.right != null) {
+                getClientesPorHabitacionRec(nodo.right, num_habitacion, clientes);
+            }else{
+                return;
+            }
+
+            }
     }
 
-
-
 }
+    
