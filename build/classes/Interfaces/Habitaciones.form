@@ -56,7 +56,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                          <Component id="Habitacion" min="-2" pref="179" max="-2" attributes="0"/>
+                          <Component id="inputHabitacion" min="-2" pref="179" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="79" max="32767" attributes="0"/>
@@ -73,7 +73,7 @@
                   <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="Habitacion" min="-2" pref="39" max="-2" attributes="0"/>
+                          <Component id="inputHabitacion" min="-2" pref="39" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -97,9 +97,9 @@
             <Property name="text" type="java.lang.String" value="Historial de habitaci&#xf3;n"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="Habitacion">
+        <Component class="javax.swing.JTextField" name="inputHabitacion">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HabitacionActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputHabitacionActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">

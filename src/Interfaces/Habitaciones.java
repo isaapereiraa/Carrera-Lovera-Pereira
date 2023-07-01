@@ -4,11 +4,21 @@
  */
 package Interfaces;
 
+import Clases.Csv;
+import Clases.Estado;
 import Clases.Global;
+import Clases.Habitacion;
 import Clases.TextoPredeterminado;
 import javax.swing.JOptionPane;
 import Estructuras.ABB;
+import Estructuras.ArrayList;
+import Estructuras.Hashtable;
+import Estructuras.List;
 import Estructuras.Nodo;
+import Estructuras.NodoABB;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,7 +32,7 @@ public class Habitaciones extends javax.swing.JFrame {
     public Habitaciones() {
         initComponents();
         this.setLocationRelativeTo(null);
-        TextoPredeterminado habitacion = new TextoPredeterminado("Número de Habitación", Habitacion);
+        TextoPredeterminado habitacion = new TextoPredeterminado("Número de Habitación", inputHabitacion);
         
     }
 
@@ -37,7 +47,7 @@ public class Habitaciones extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        Habitacion = new javax.swing.JTextField();
+        inputHabitacion = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Resultado = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
@@ -52,9 +62,9 @@ public class Habitaciones extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Historial de habitación");
 
-        Habitacion.addActionListener(new java.awt.event.ActionListener() {
+        inputHabitacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HabitacionActionPerformed(evt);
+                inputHabitacionActionPerformed(evt);
             }
         });
 
@@ -107,7 +117,7 @@ public class Habitaciones extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addComponent(Habitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(inputHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
@@ -120,7 +130,7 @@ public class Habitaciones extends javax.swing.JFrame {
                 .addGap(97, 97, 97)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Habitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(inputHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1))
@@ -141,30 +151,34 @@ public class Habitaciones extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void HabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HabitacionActionPerformed
+    private void inputHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputHabitacionActionPerformed
         
-    }//GEN-LAST:event_HabitacionActionPerformed
+    }//GEN-LAST:event_inputHabitacionActionPerformed
 
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
-//        String cedulaTexto = Habitacion.getText().replaceAll(",", "");
-//        
-//        if (Global.isNumeric(cedulaTexto)==false && "".equals(Habitacion.getText())) {
-//            JOptionPane.showMessageDialog(null, "Por favor ingrese un número de cédula valido");
-//        }
-//        else{
-//            ABB arbol = Global.getABB();
-//            int num_cedula = Integer.parseInt(cedulaTexto);
-//       
-//            if (arbol.containsKey(num_cedula)== true){
-//                
-//             
-//                Resultado.setText(arbol.toString());
-//                Habitacion.setText(null);
-//            } else {
-//                JOptionPane.showMessageDialog(null, "No existe una reservación con estos datos");
-//                Habitacion.setText(null);
-//            }
-//            } 
+    String habitacionTexto = inputHabitacion.getText();
+    
+    if (!habitacionTexto.matches("\\d+")) {
+        JOptionPane.showMessageDialog(null, "Por favor ingrese un número de habitación válido");
+    } else {
+        ABB historial = Global.getABB();
+        int num_habitacion = Integer.parseInt(habitacionTexto);
+        
+        ArrayList<Reservas> listareservas = new ArrayList<>();
+        ABB.Nodo nodo = historial.find(num_habitacion);
+        if (nodo != null) {
+            while (nodo.getDato().getNum_habitacion() == num_habitacion) {
+                Reservas.add(nodo.getDato());
+                nodo = historial.siguiente(nodo);
+            }
+            
+            // Realizar acciones con la lista de reservas
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontraron reservaciones para la habitación buscada");
+        }
+        
+        inputHabitacion.setText("");
+    }
     }//GEN-LAST:event_BotonBuscarActionPerformed
 
     /**
@@ -205,8 +219,8 @@ public class Habitaciones extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonBuscar;
-    private javax.swing.JTextField Habitacion;
     private javax.swing.JTextArea Resultado;
+    private javax.swing.JTextField inputHabitacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
