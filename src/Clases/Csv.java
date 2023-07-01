@@ -142,6 +142,7 @@ public class Csv {
                     int num_hab = Integer.parseInt(datos[8]);
                     Historico llamada = new Historico(cedula, nombre, apellido, email, genero, llegada, num_hab);
                     historial.insert(cedula, llamada);
+                    Global.setABB(historial);
                 }
             }
         } catch (FileNotFoundException e){

@@ -143,9 +143,12 @@ public class Inicio extends javax.swing.JFrame {
 
         Hashtable hash = new Hashtable(); //Hashtable con nombres como key
         ABB arbol = new ABB();
+        ABB historico = new ABB();
         try {
             Csv.leerEstado(hash);
             Csv.leerReservas(arbol);
+            Csv.leerHistorico(historico);
+            
 
             
             Menu menu = new Menu();
