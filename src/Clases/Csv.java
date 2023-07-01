@@ -132,7 +132,7 @@ public class Csv {
                         cedulaTotal = cedula1 + cedula2;
                     }else{
                         cedulaTotal = cedula1 + cedula2 + cedula3;
-                    } 
+                    }
                     int cedula = Integer.parseInt(cedulaTotal);
                     String nombre = datos[3];
                     String apellido = datos[4];
@@ -151,6 +151,7 @@ public class Csv {
             System.out.println("Error al leer el archivo");
         }
     }
+
     
     /**
      *
