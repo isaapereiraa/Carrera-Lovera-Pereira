@@ -238,7 +238,16 @@ public class ABB {
             return null;
         }
     }
-    
+     
+     public Reservas getContenido(int key){
+        Nodo nodo = find(key);
+        if(nodo != null && nodo.contenido instanceof Reservas){
+            Reservas reserva = (Reservas) nodo.contenido;
+            return reserva;
+        } else {
+            return null;
+        }
+    }
     public String obtenerTipoHab(int key){
         Nodo nodo = find(key);
         if(nodo != null && nodo.contenido instanceof Reservas){

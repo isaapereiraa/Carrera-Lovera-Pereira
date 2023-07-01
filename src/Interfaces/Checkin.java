@@ -31,7 +31,7 @@ public class Checkin extends javax.swing.JFrame {
     public Checkin() {
         initComponents();
         this.setLocationRelativeTo(null);
-        TextoPredeterminado cedula = new TextoPredeterminado("Numero de cedula.Ej: 14597844", Cedula);
+        TextoPredeterminado cedula = new TextoPredeterminado("Cedula. Ej: 14.597.844", Cedula);
         
     }
 
@@ -175,13 +175,8 @@ public class Checkin extends javax.swing.JFrame {
     }//GEN-LAST:event_CedulaActionPerformed
 
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
-        String cedulaTexto = Cedula.getText().replaceAll(",", "");
-        
-        if (Global.isNumeric(cedulaTexto)==false && "".equals(Cedula.getText())) {
-            JOptionPane.showMessageDialog(null, "Por favor ingrese un número de cédula valido");
-        }
-        else{
-            ABB arbol = Global.getABB();
+        String cedulaTexto = Cedula.getText().replaceAll("\\.", "");
+        ABB arbol = Global.getABB();
             Hashtable hash = Global.getHash();
             Hashtable hash1 = new Hashtable();
              try {
@@ -189,22 +184,29 @@ public class Checkin extends javax.swing.JFrame {
                 } catch (IOException ex) {
                     Logger.getLogger(Checkin.class.getName()).log(Level.SEVERE, null, ex);
                 }
+        if (Global.isNumeric(cedulaTexto)==false && "".equals(Cedula.getText())) {
+            JOptionPane.showMessageDialog(null, "Por favor ingrese un número de cédula valido");
+        }
+        else{
             int num_cedula = Integer.parseInt(cedulaTexto);
             
             if (arbol.containsKey(num_cedula)== true){
                 String tipo_hab = arbol.obtenerTipoHab(num_cedula); //tipo de habitacion de la reserva
-                List <Estado> hab_ocupadas = hash.getKeys();//Lista con habitaciones ocupadas
-                List <Habitacion>  hab = hash1.getKeys1(tipo_hab); //Lista de habitaciones en general, pero del tipo de la reserva
-
-                hab_ocupadas.imprimir();
-                System.out.println(  hab_ocupadas.getLength());
-                
-                hab.imprimir();
-                System.out.println(  hab.getLength());
-                
-         
-                Resultado.setText(arbol.toString());
-                Cedula.setText(null);
+                List <Integer> hab_ocupadas = hash.getKeys();//Lista con habitaciones ocupadas
+                List <Integer>  hab = hash1.getKeys1(tipo_hab); //Lista de habitaciones en general, pero del tipo de la reserva
+                List<Integer> habdisponibles = hab_ocupadas.getElementFaltantes(hab); //Lista habitaciones disponibles del tipo 
+                if(!habdisponibles.isEmpty()){
+                    Integer habfinal = habdisponibles.get(0);
+                    Clases.Reservas res = arbol.getContenido(num_cedula);
+                    Estado estado = new Estado(habfinal,res.getNombre(),res.getApellido(),res.getGenero(),res.getGenero(),res.getCelular(),res.getLlegada());
+                    Nodo est = new Nodo(estado);
+                    hash.put(res.getNombre()+res.getApellido(), est);
+                    Global.setHash(hash);
+                    Nodo<Habitacion> info = hash1.get(Integer.toString(habfinal));
+                    
+                    Resultado.setText(info.getData().tohabitacion());
+                    Cedula.setText(null);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "No existe una reservación con estos datos");
                 Cedula.setText(null);

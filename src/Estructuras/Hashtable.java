@@ -97,6 +97,7 @@ public class Hashtable<T> {
     
          /**
      * Retorna una lista con las claves de la tabla hash
+     * @param tipo_hab
      * @return
      */
     public List<T> getKeys1(String tipo_hab) {

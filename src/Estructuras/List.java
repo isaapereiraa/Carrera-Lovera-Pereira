@@ -4,6 +4,8 @@
  */
 package Estructuras;
 
+import Clases.Habitacion;
+
 /**
  * Esta clase maneja todo lo relacionado a la formación, busqueda o eliminación de elementos de una lista
  * @author alejandra, isabella, adrian
@@ -165,29 +167,42 @@ public class List <T> {
             length--;
         }
     }
-    
+    public boolean remove(T elemento) {
+        Nodo<T> actual = head;
+        Nodo<T> anterior = null;
+
+        while (actual != null) {
+            if (actual.getData().equals(elemento)) {
+                if (anterior == null) {
+                    head = actual.getNext();
+                } else {
+                    anterior.setNext(actual.getNext());
+                }
+                length--;
+                return true;
+            }
+            anterior = actual;
+            actual = actual.getNext();
+        }
+        return false;
+    }
     /**
     * Obtener Elemento
     * Metodo que recorre la lista para obterner el elemento de un nodo determinado
-    * @param position representa el indice en donde se encuentra el nodo, del cual se queire obtener la informacion
+    * @param indice representa el indice en donde se encuentra el nodo, del cual se queire obtener la informacion
     * @return retorna la informacion del nodo
     */
-    public T getElement(int position){
-        if (isEmpty()){
-            return null;
-        } else {
-            Nodo pointer = getHead();
-            int count = 0;
-            while (count < position && pointer.getNext()!= null){
-                pointer = pointer.getNext();
-                count++;
-            }
-            if (count == position){
-                return (T) pointer.getData();
-            } else {
-                return null;
-            }
+    public T get(int indice) {
+        if (indice < 0 || indice >= length) {
+            throw new IndexOutOfBoundsException();
         }
+
+        Nodo<T> actual = head;
+        for (int i = 0; i < indice; i++) {
+            actual = actual.getNext();
+        }
+
+        return actual.getData();
     }
     
     /**
@@ -206,8 +221,30 @@ public class List <T> {
             }
           
     }
-
-    public boolean contains(Integer elemento) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+        
+    public boolean contains(T elemento) {
+    Nodo<T> actual = head;
+    while (actual != null) {
+        if (actual.getData().equals(elemento)) {
+            return true;
+        }
+        actual = actual.getNext();
     }
+    return false;
+    }
+
+   public List<T> getElementFaltantes(List<T> lista2) {
+    List<T> elementosFaltantes = new List<>();
+    // Iteramos sobre los elementos de la lista2
+    for (int i = 0; i < lista2.length; i++) {
+        // Si el elemento no está presente en nuestra lista, lo agregamos a la lista de elementos faltantes
+        if (!this.contains(lista2.get(i))) {
+            elementosFaltantes.insertLast(lista2.get(i));
+        }
+    }
+    // Devolvemos la lista de elementos faltantes
+    return elementosFaltantes;
+    }
+
 }

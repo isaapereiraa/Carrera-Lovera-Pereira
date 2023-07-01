@@ -22,7 +22,7 @@ public class Reservas extends javax.swing.JFrame {
     public Reservas() {
         initComponents();
         this.setLocationRelativeTo(null);
-        TextoPredeterminado cedula = new TextoPredeterminado("Numero de cedula.Ej: 14597844", Cedula);
+        TextoPredeterminado cedula = new TextoPredeterminado("Cedula. Ej: 14.597.844", Cedula);
         
     }
 
@@ -166,7 +166,7 @@ public class Reservas extends javax.swing.JFrame {
     }//GEN-LAST:event_CedulaActionPerformed
 
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
-        String cedulaTexto = Cedula.getText().replaceAll(",", "");
+        String cedulaTexto = Cedula.getText().replaceAll("\\.", "");
         
         if (Global.isNumeric(cedulaTexto)==false && "".equals(Cedula.getText())) {
             JOptionPane.showMessageDialog(null, "Por favor ingrese un número de cédula valido");
