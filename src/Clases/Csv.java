@@ -6,7 +6,9 @@ package Clases;
 import Estructuras.ABB;
 import Estructuras.ArrayList;
 import Estructuras.Hashtable;
+import Estructuras.Nodo;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -20,7 +22,8 @@ public class Csv {
     
     
     public static void leerEstado(Hashtable<Estado> clientes) throws FileNotFoundException, IOException{
-        try (BufferedReader br = new BufferedReader(new FileReader("test//Estado.csv"))){
+        String filePath = "test" + File.separator + "Estado.csv";
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
             String linea;
             linea = br.readLine();
             while ((linea = br.readLine()) != null){
@@ -34,7 +37,8 @@ public class Csv {
                 String celular = datos[5];
                 String llegada = datos[6];
                 Estado estado = new Estado(hab, nombre, apellido, correo, genero, celular, llegada);
-                clientes.put(fullname, estado);
+                Nodo est = new Nodo(estado);
+                clientes.put(fullname, est);
                 Global.setHash(clientes);
 
             }
@@ -43,19 +47,19 @@ public class Csv {
         }
     }
     
-    public static void leerHabitaciones(ArrayList<Estado> clientes) throws FileNotFoundException, IOException{
-        Hashtable hash = new Hashtable();
-        try (BufferedReader br = new BufferedReader(new FileReader("test//Habitaciones.csv"))){
+    public static void leerHabitaciones(Hashtable <Habitacion> habitacion) throws FileNotFoundException, IOException{
+        try (BufferedReader br = new BufferedReader(new FileReader("test\\Habitaciones.csv"))){
             String linea;
             linea = br.readLine();
             while ((linea = br.readLine()) != null){
                 String[] datos = linea.split(",");
-                int hab = Integer.parseInt(datos[0]);
-                String nombre = datos[1];
-                String apellido = datos[2];
-                Estado llamada = new Estado(hab, nombre, apellido);
-                clientes.add(llamada);
-//                hash.put(client, hab);
+                int num_hab = Integer.parseInt(datos[0]);
+                String tipo_hab = datos[1];
+                String piso = datos[2];
+                Habitacion habinfo = new Habitacion(num_hab, tipo_hab, piso);
+                Nodo hab1 = new Nodo(habinfo);
+                habitacion.put(datos[0], hab1);
+                Global.setHash(habitacion);
             }
         } catch (IOException e){
             System.out.println("Archivo no encontrado");
@@ -63,8 +67,8 @@ public class Csv {
     }
     
     public static void leerHistorico(ArrayList<Estado> clientes) throws FileNotFoundException, IOException{
-        Hashtable hash = new Hashtable();
-        try (BufferedReader br = new BufferedReader(new FileReader("test//Historico.csv"))){
+        String filePath = "test" + File.separator + "Historico.csv";
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
             String linea;
             linea = br.readLine();
             while ((linea = br.readLine()) != null){
@@ -74,7 +78,7 @@ public class Csv {
                 String apellido = datos[2];
                 Estado llamada = new Estado(hab, nombre, apellido);
                 clientes.add(llamada);
-//                hash.put(client, hab);
+                
             }
         } catch (IOException e){
             System.out.println("Archivo no encontrado");
@@ -88,8 +92,8 @@ public class Csv {
      * @throws IOException
      */
     public static void leerReservas(ABB clientes) throws FileNotFoundException, IOException{
-        
-        try (BufferedReader br = new BufferedReader(new FileReader("test//Reservas.csv"))){
+        String filePath = "test" + File.separator + "Reservas.csv";
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
             String linea;
             linea = br.readLine();
             while ((linea = br.readLine()) != null){

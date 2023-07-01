@@ -141,22 +141,24 @@ public class Inicio extends javax.swing.JFrame {
 
     private void BotonCsvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCsvActionPerformed
 
-        Hashtable hash = new Hashtable();
+        Hashtable hash = new Hashtable(); //Hashtable con nombres como key
         ABB arbol = new ABB();
         try {
             Csv.leerEstado(hash);
             Csv.leerReservas(arbol);
+
             
+            Menu menu = new Menu();
+            
+            menu.setVisible(true);
+
+            this.setVisible(false);
          
                  
         } catch (IOException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        Menu menu = new Menu();
-        menu.setVisible(true);
-
-        this.setVisible(false);
+       
     }//GEN-LAST:event_BotonCsvActionPerformed
 
     /**

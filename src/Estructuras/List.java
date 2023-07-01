@@ -206,4 +206,8 @@ public class List <T> {
             }
           
     }
+
+    public boolean contains(Integer elemento) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Estructuras;
+import Clases.Reservas;
 
 /**
  *Implementacion de las primitivas de un arbol binario de busqueda
@@ -178,7 +179,7 @@ public class ABB {
     public void inorder(Nodo n){
         if (n!=null){
             inorder(n.left);
-            System.out.println("Indice "+ n.llave +" Valor "+n.contenido);
+//            System.out.println("Indice "+ n.llave +" Valor "+n.contenido);
             inorder(n.right);
         }  
     }
@@ -227,4 +228,33 @@ public class ABB {
         }
         return reemplazo;
     }
+    
+     public String getReserva(int key){
+        Nodo nodo = find(key);
+        if(nodo != null && nodo.contenido instanceof Reservas){
+            Reservas reserva = (Reservas) nodo.contenido;
+            return reserva.toReservas();
+        } else {
+            return null;
+        }
+    }
+    
+    public String obtenerTipoHab(int key){
+        Nodo nodo = find(key);
+        if(nodo != null && nodo.contenido instanceof Reservas){
+            Reservas reserva = (Reservas) nodo.contenido;
+            return reserva.getTipo_hab();
+        } else {
+            return null;
+        }
+    }
+    
+//    public int[] hab_ocupadas(){
+//        Nodo nodo;
+//        
+//        while if (nodo.llave != null){
+//            int [] hab_ocupadas;
+//            hab_ocupadas.append(nodo.llave);
+//        }
+//    }
 }

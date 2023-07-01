@@ -7,7 +7,8 @@ import Clases.TextoPredeterminado;
 import javax.swing.JOptionPane;
 import Clases.Global;
 import Estructuras.Hashtable;
-
+import Clases.Estado;
+import Estructuras.Nodo;
 /**
  *
  * @author  isabella, adrian, alejandra
@@ -41,6 +42,7 @@ public class Registro extends javax.swing.JFrame {
         ResultadoBusqueda = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         Buscar = new javax.swing.JButton();
+        BotonMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,10 +61,12 @@ public class Registro extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0)));
         jPanel2.setForeground(new java.awt.Color(255, 204, 153));
 
-        Buscar.setFont(Buscar.getFont().deriveFont(Buscar.getFont().getSize()+2f));
+        Buscar.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        Buscar.setForeground(new java.awt.Color(204, 204, 204));
         Buscar.setText("Buscar");
-        Buscar.setBorderPainted(false);
+        Buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         Buscar.setContentAreaFilled(false);
+        Buscar.setFocusTraversalPolicyProvider(true);
         Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarActionPerformed(evt);
@@ -80,6 +84,16 @@ public class Registro extends javax.swing.JFrame {
             .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        BotonMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Untitled design (10).png"))); // NOI18N
+        BotonMenu.setBorderPainted(false);
+        BotonMenu.setContentAreaFilled(false);
+        BotonMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonMenuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -88,18 +102,23 @@ public class Registro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(NombreCliente)
-                    .addComponent(ApellidoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BotonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(NombreCliente)
+                            .addComponent(ApellidoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(45, 45, 45))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,7 +134,9 @@ public class Registro extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BotonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,13 +159,13 @@ public class Registro extends javax.swing.JFrame {
         }
         else{
             Hashtable hash = Global.getHash();
-            String name = NombreCliente.getText();
-            String lastname = ApellidoCliente.getText();
+            String name = Global.capitalizar(NombreCliente.getText());
+            String lastname = Global.capitalizar(ApellidoCliente.getText());
             String fullname = name + lastname;
-       
+
             if (hash.containsKey(fullname)== true){
-                String resultado = hash.get(fullname).toEstado();
-                ResultadoBusqueda.setText(resultado);
+                Nodo <Estado> resultado = hash.get(fullname);
+                ResultadoBusqueda.setText(resultado.getData().toEstado());
                 NombreCliente.setText(null);
                 ApellidoCliente.setText(null);
             } else {
@@ -152,8 +173,14 @@ public class Registro extends javax.swing.JFrame {
                 NombreCliente.setText(null);
                 ApellidoCliente.setText(null);
             }
-            } 
+        }
     }//GEN-LAST:event_BuscarActionPerformed
+
+    private void BotonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonMenuActionPerformed
+        this.setVisible(false);
+        Menu menu = new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_BotonMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,6 +219,7 @@ public class Registro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ApellidoCliente;
+    private javax.swing.JButton BotonMenu;
     private javax.swing.JButton Buscar;
     private javax.swing.JTextField NombreCliente;
     private javax.swing.JTextArea ResultadoBusqueda;

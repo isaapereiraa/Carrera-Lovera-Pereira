@@ -4,22 +4,31 @@
  */
 package Interfaces;
 
+import Clases.Csv;
+import Clases.Estado;
 import Clases.Global;
+import Clases.Habitacion;
 import Clases.TextoPredeterminado;
 import javax.swing.JOptionPane;
 import Estructuras.ABB;
+import Estructuras.Hashtable;
+import Estructuras.List;
 import Estructuras.Nodo;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author  isabella, adrian, alejandra
  */
-public class Reservas extends javax.swing.JFrame {
+public class Checkin extends javax.swing.JFrame {
 
     /**
      * Creates new form Reservas
      */
-    public Reservas() {
+    public Checkin() {
         initComponents();
         this.setLocationRelativeTo(null);
         TextoPredeterminado cedula = new TextoPredeterminado("Numero de cedula.Ej: 14597844", Cedula);
@@ -51,7 +60,7 @@ public class Reservas extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Búsqueda de reservación");
+        jLabel1.setText("Check in");
 
         Cedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +126,7 @@ public class Reservas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(BotonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BotonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -136,15 +145,15 @@ public class Reservas extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1)
                 .addGap(97, 97, 97)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addComponent(BotonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addComponent(BotonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -168,16 +177,33 @@ public class Reservas extends javax.swing.JFrame {
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
         String cedulaTexto = Cedula.getText().replaceAll(",", "");
         
-        if (Global.isNumeric(cedulaTexto)==false || "".equals(Cedula.getText())) {
+        if (Global.isNumeric(cedulaTexto)==false && "".equals(Cedula.getText())) {
             JOptionPane.showMessageDialog(null, "Por favor ingrese un número de cédula valido");
         }
         else{
             ABB arbol = Global.getABB();
+            Hashtable hash = Global.getHash();
+            Hashtable hash1 = new Hashtable();
+             try {
+                    Csv.leerHabitaciones(hash1);
+                } catch (IOException ex) {
+                    Logger.getLogger(Checkin.class.getName()).log(Level.SEVERE, null, ex);
+                }
             int num_cedula = Integer.parseInt(cedulaTexto);
-       
+            
             if (arbol.containsKey(num_cedula)== true){
-                             
-                Resultado.setText(arbol.getReserva(num_cedula));
+                String tipo_hab = arbol.obtenerTipoHab(num_cedula); //tipo de habitacion de la reserva
+                List <Estado> hab_ocupadas = hash.getKeys();//Lista con habitaciones ocupadas
+                List <Habitacion>  hab = hash1.getKeys1(tipo_hab); //Lista de habitaciones en general, pero del tipo de la reserva
+
+                hab_ocupadas.imprimir();
+                System.out.println(  hab_ocupadas.getLength());
+                
+                hab.imprimir();
+                System.out.println(  hab.getLength());
+                
+         
+                Resultado.setText(arbol.toString());
                 Cedula.setText(null);
             } else {
                 JOptionPane.showMessageDialog(null, "No existe una reservación con estos datos");
@@ -209,20 +235,21 @@ public class Reservas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Reservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Checkin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Reservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Checkin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Reservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Checkin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Reservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Checkin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Reservas().setVisible(true);
+                new Checkin().setVisible(true);
             }
         });
     }

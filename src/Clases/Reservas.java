@@ -19,7 +19,7 @@ public class Reservas {
     private String llegada;
     private String salida;
     
-     public Reservas(String cedula, String nombre, String apellido, String correo, String genero, String tipo_hab, String celular, String llegada, String salida) {
+    public Reservas(String cedula, String nombre, String apellido, String correo, String genero, String tipo_hab, String celular, String llegada, String salida) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -104,6 +104,6 @@ public class Reservas {
     }
     
     public String toReservas(){
-        return "C.I: " +this.cedula+"\n" + "Nombre: " +this.nombre+"\n" + "Apellido: " +this.apellido+"\n" + "Correo: " +this.correo+"\n" + "Genero: " +this.genero+"\n" + "Tipo de habitación: " +this.tipo_hab+"\n"+ "Celular: " +this.celular+"\n" + "Llegada: " +this.llegada + "Salida: " +this.salida;
+        return "C.I: " +this.cedula+"\n" + "Nombre: " +this.nombre+"\n" + "Apellido: " +this.apellido+"\n" + "Correo: " +this.correo+"\n" + "Genero: " +this.genero+"\n" + "Tipo de habitación: " +this.tipo_hab+"\n"+ "Celular: " +this.celular+"\n" + "Llegada: " +this.llegada +"\n"+ "Salida: " +this.salida;
     }
 }
