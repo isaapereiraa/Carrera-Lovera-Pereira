@@ -197,6 +197,7 @@ public class Checkin extends javax.swing.JFrame {
                 List<Integer> habdisponibles = hab_ocupadas.getElementFaltantes(hab); //Lista habitaciones disponibles del tipo 
                 if(!habdisponibles.isEmpty()){
                     Integer habfinal = habdisponibles.get(0);
+                    habdisponibles.imprimir();
                     Clases.Reservas res = arbol.getContenido(num_cedula);
                     Estado estado = new Estado(habfinal,res.getNombre(),res.getApellido(),res.getCorreo(),res.getGenero(),res.getCelular(),res.getLlegada());
                     Nodo est = new Nodo(estado);

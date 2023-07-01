@@ -206,7 +206,9 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonCheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCheckoutActionPerformed
-        JOptionPane.showMessageDialog(null, "Adios");
+        Checkout checkout = new Checkout();
+        checkout.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BotonCheckoutActionPerformed
 
     private void BotonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistroActionPerformed
