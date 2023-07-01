@@ -9,7 +9,7 @@ package Clases;
  * @author  isabella, adrian, alejandra
  */
 public class Historico {
-    private String cedula;
+    private int cedula;
     private String nombre;
     private String apellido;
     private String correo;
@@ -17,7 +17,7 @@ public class Historico {
     private String llegada;
     private Integer num_hab;
 
-    public Historico(String cedula, String nombre, String apellido, String correo, String genero, String llegada, Integer num_hab) {
+    public Historico(int cedula, String nombre, String apellido, String correo, String genero, String llegada, Integer num_hab) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -27,7 +27,7 @@ public class Historico {
         this.num_hab = num_hab;
     }
 
-    public String getCedula() {
+    public int getCedula() {
         return cedula;
     }
 
@@ -55,7 +55,7 @@ public class Historico {
         return num_hab;
     }
 
-    public void setCedula(String cedula) {
+    public void setCedula(int cedula) {
         this.cedula = cedula;
     }
 
@@ -83,6 +83,8 @@ public class Historico {
         this.num_hab = num_hab;
     }
     
-    
-    
+
+    public String toString() {
+        return "Cédula: " + cedula + ", Nombre: " + nombre + ", Apellido: " + apellido + ", Correo: " + correo + ", Género: " + genero + ", Fecha de llegada: " + llegada + ", Número de habitación: " + num_hab;
+    }
 }

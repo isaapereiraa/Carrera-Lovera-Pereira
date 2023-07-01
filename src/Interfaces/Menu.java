@@ -226,7 +226,9 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonReservasActionPerformed
 
     private void BotonHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonHistorialActionPerformed
-        JOptionPane.showMessageDialog(null, "Historial");
+        Habitaciones habitaciones = new Habitaciones();
+        habitaciones.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BotonHistorialActionPerformed
 
     private void BotonCheckinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCheckinActionPerformed

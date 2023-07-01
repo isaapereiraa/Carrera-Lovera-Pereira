@@ -17,7 +17,6 @@ public class Estado {
     private String genero;
     private String celular;
     private String llegada; 
-
     
     public Estado(Integer habitacion, String nombre, String apellido, String correo, String genero, String celular, String llegada) {
         this.habitacion = habitacion;
