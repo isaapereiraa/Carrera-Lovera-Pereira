@@ -43,7 +43,7 @@ public class Habitacion {
         this.piso = piso;
     }
     public String tohabitacion(){
-        return "Numero de habitración: " + this.numero;
+        return "Numero de habitración: " + this.numero + "\n" + "Tipo habitación: " + this.tipo.toUpperCase() + "\n"+ "Piso: " + this.piso;
     }
     
 }
