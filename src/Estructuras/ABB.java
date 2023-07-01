@@ -3,7 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Estructuras;
+import Clases.Habitacion;
+import Clases.Historico;
 import Clases.Reservas;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  *Implementacion de las primitivas de un arbol binario de busqueda
@@ -257,4 +263,25 @@ public class ABB {
 //            hab_ocupadas.append(nodo.llave);
 //        }
 //    }
+    
+    public ArrayList<Historico> buscarClientes(int num_hab){
+        ArrayList<Historico> clientes = new ArrayList<Historico>();
+        Nodo aux = raiz;
+        while(aux!=null){
+            Integer llave = aux.llave;
+            if(num_hab==llave){
+                Historico historico = (Historico) aux.contenido;
+                clientes.add(historico);
+//                aux = aux.left;
+            }
+            if(num_hab<=aux.llave){
+                aux = aux.left;
+            } else {
+                aux = aux.right;
+            }
+        }
+        return clientes;
+}
+
+
 }

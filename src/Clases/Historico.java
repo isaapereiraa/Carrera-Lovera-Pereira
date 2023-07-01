@@ -83,6 +83,8 @@ public class Historico {
         this.num_hab = num_hab;
     }
     
-    
-    
+
+    public String toString() {
+        return "Cédula: " + cedula + ", Nombre: " + nombre + ", Apellido: " + apellido + ", Correo: " + correo + ", Género: " + genero + ", Fecha de llegada: " + llegada + ", Número de habitación: " + num_hab;
+    }
 }

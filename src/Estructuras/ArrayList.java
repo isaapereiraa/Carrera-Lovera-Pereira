@@ -88,6 +88,6 @@ public class ArrayList <T>{
         capacity *= 2;
     }
 
-    
+
 
 }

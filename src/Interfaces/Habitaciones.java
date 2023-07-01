@@ -8,6 +8,7 @@ import Clases.Csv;
 import Clases.Estado;
 import Clases.Global;
 import Clases.Habitacion;
+import Clases.Historico;
 import Clases.TextoPredeterminado;
 import javax.swing.JOptionPane;
 import Estructuras.ABB;
@@ -15,7 +16,6 @@ import Estructuras.ArrayList;
 import Estructuras.Hashtable;
 import Estructuras.List;
 import Estructuras.Nodo;
-import Estructuras.NodoABB;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -164,21 +164,21 @@ public class Habitaciones extends javax.swing.JFrame {
         ABB historial = Global.getABB();
         int num_habitacion = Integer.parseInt(habitacionTexto);
         
-        ArrayList<Reservas> listareservas = new ArrayList<>();
-        ABB.Nodo nodo = historial.find(num_habitacion);
-        if (nodo != null) {
-            while (nodo.getDato().getNum_habitacion() == num_habitacion) {
-                Reservas.add(nodo.getDato());
-                nodo = historial.siguiente(nodo);
+        ArrayList<Historico> clientes = historial.buscarClientes(num_habitacion);
+        System.out.println("Tamaño de la lista de clientes: " + clientes.size());
+        StringBuilder sb = new StringBuilder();
+        sb.append("Clientes de la habitación " + num_habitacion + ":\n");
+        if (clientes.size() == 0) {
+            sb.append("No se encontraron clientes para esta habitación.");
+        }else{
+        for (int i = 0; i < clientes.size(); i++) {
+            sb.append(clientes.get(i).toString() + "\n");
             }
-            
-            // Realizar acciones con la lista de reservas
-        } else {
-            JOptionPane.showMessageDialog(null, "No se encontraron reservaciones para la habitación buscada");
         }
+        Resultado.setText(sb.toString());
+
+}
         
-        inputHabitacion.setText("");
-    }
     }//GEN-LAST:event_BotonBuscarActionPerformed
 
     /**
