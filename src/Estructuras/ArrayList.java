@@ -19,18 +19,26 @@ public class ArrayList <T>{
      * Constructor
      */
     public ArrayList() {
-        this.array = (T[]) new Object[500];
+        this.array = (T[]) new Object[100];
         this.size = 0;
-        this.capacity = 500;
+        this.capacity = 100;
     }
 
     /**
      * Añade un elemento al final del ArrayList
      * @param element
      */
-    public void add(T element) {
-        add(element);
-    }
+    /**
+    * Añade un elemento al final del ArrayList
+    * @param element
+    */
+   public void add(T element) {
+       if (size == capacity) {
+           extendCapacity();
+       }
+       array[size] = element;
+       size++;
+   }
 
     /**
      * Remueve el elemento en la posición indicada
