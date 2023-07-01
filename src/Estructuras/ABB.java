@@ -264,24 +264,76 @@ public class ABB {
 //        }
 //    }
     
-    public ArrayList<Historico> buscarClientes(int num_hab){
-        ArrayList<Historico> clientes = new ArrayList<Historico>();
-        Nodo aux = raiz;
-        while(aux!=null){
-            Integer llave = aux.llave;
-            if(num_hab==llave){
-                Historico historico = (Historico) aux.contenido;
-                clientes.add(historico);
+//    public ABB buscarClientes(int num_hab) {
+//        ABB clientes = new ABB();
+//        Nodo aux = raiz;
+//        while (aux != null) {
+//            Integer llave = aux.llave;
+//            if (num_hab == llave) {
+//                Historico historico = (Historico) aux.contenido;
+//                clientes.insert(historico.getCedula(), historico);
+//                // Detener la búsqueda cuando se encuentra un nodo con el número de habitación buscado.
+//                break;
+//            } else if (num_hab < llave) {
 //                aux = aux.left;
-            }
-            if(num_hab<=aux.llave){
-                aux = aux.left;
-            } else {
-                aux = aux.right;
+//            } else {
+//                aux = aux.right;
+//            }
+//        }
+//        return clientes;
+//    }
+    
+//    public ArrayList<Historico> buscarClientesPorHabitacion(int num_habitacion) {
+//        ArrayList<Historico> clientes = new ArrayList<>();
+//        Nodo nodoActual = raiz;
+//
+//        while(nodoActual != null) {
+//            if(nodoActual.llave == num_habitacion) {
+//                // Se encontró la habitación, buscar los clientes en el subárbol izquierdo y derecho
+//                buscarClientesEnSubarbol(nodoActual.left, clientes, num_habitacion);
+//                buscarClientesEnSubarbol(nodoActual.right, clientes, num_habitacion);
+//                break;
+//            } else if(nodoActual.llave > num_habitacion) {
+//                nodoActual = nodoActual.left;
+//            } else {
+//                nodoActual = nodoActual.right;
+//            }
+//        }
+//
+//    return clientes;
+//}
+//
+//    private void buscarClientesEnSubarbol(Nodo nodoActual, ArrayList<Historico> clientes, int num_habitacion) {
+//        if(nodoActual != null) {
+//            buscarClientesEnSubarbol(nodoActual.left, clientes, num_habitacion);
+//            buscarClientesEnSubarbol(nodoActual.right, clientes, num_habitacion);
+//
+//            if(nodoActual.contenido instanceof Historico && ((Historico)nodoActual.contenido).getNum_hab() == num_habitacion) {
+//                clientes.add((Historico)nodoActual.contenido);
+//            }
+//        }
+//    }
+
+    public ArrayList<Historico> getClientesPorHabitacion(int num_habitacion){
+        ArrayList<Historico> clientes = new ArrayList<>();
+        getClientesPorHabitacionRec(raiz, num_habitacion, clientes);
+        return clientes;
+    }
+
+    private void getClientesPorHabitacionRec(Nodo nodo, int num_habitacion, ArrayList<Historico> clientes){
+        if (nodo == null || nodo.contenido == null){
+            return;
+        }
+        if (nodo.contenido instanceof Historico){
+            Historico historico = (Historico) nodo.contenido;
+            if (historico.getNum_hab().equals(num_habitacion)){
+                clientes.add(historico);
             }
         }
-        return clientes;
-}
+        getClientesPorHabitacionRec(nodo.left, num_habitacion, clientes);
+        getClientesPorHabitacionRec(nodo.right, num_habitacion, clientes);
+    }
+
 
 
 }

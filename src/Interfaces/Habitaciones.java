@@ -156,29 +156,15 @@ public class Habitaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_inputHabitacionActionPerformed
 
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
-    String habitacionTexto = inputHabitacion.getText();
-    
+    String habitacionTexto = inputHabitacion.getText().replaceAll(",", "");
+
     if (!habitacionTexto.matches("\\d+")) {
         JOptionPane.showMessageDialog(null, "Por favor ingrese un número de habitación válido");
     } else {
-        ABB historial = Global.getABB();
-        int num_habitacion = Integer.parseInt(habitacionTexto);
-        
-        ArrayList<Historico> clientes = historial.buscarClientes(num_habitacion);
-        System.out.println("Tamaño de la lista de clientes: " + clientes.size());
-        StringBuilder sb = new StringBuilder();
-        sb.append("Clientes de la habitación " + num_habitacion + ":\n");
-        if (clientes.size() == 0) {
-            sb.append("No se encontraron clientes para esta habitación.");
-        }else{
-        for (int i = 0; i < clientes.size(); i++) {
-            sb.append(clientes.get(i).toString() + "\n");
-            }
+        ABB arbol2= Global.getABB();
+        int num_hab = Integer.parseInt(habitacionTexto);
+        Resultado.setText(arbol2.getClientesPorHabitacion(num_hab).toString());
         }
-        Resultado.setText(sb.toString());
-
-}
-        
     }//GEN-LAST:event_BotonBuscarActionPerformed
 
     /**
