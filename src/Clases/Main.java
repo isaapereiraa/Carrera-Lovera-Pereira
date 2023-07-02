@@ -8,7 +8,8 @@ import Interfaces.Inicio;
 
 
 /**
- *
+ * Clase principal del programa.
+ * Crea una instancia de la clase Inicio y la hace visible para el usuario.
  * @author Isabella Pereira, Adrian Lovera, Alejandra Carrera
  */
 public class Main {
@@ -19,9 +20,6 @@ public class Main {
     public static void main(String[] args) {
         Inicio inicio = new Inicio();
         inicio.setVisible(true);
-        
-       
-        
 
     }
     

@@ -19,6 +19,19 @@ public class Reservas {
     private String llegada;
     private String salida;
     
+    /**
+     * Constructor de la clase Reservas.
+     * 
+     * @param cedula la cédula del cliente.
+     * @param nombre el nombre del cliente.
+     * @param apellido el apellido del cliente.
+     * @param correo el correo electrónico del cliente.
+     * @param genero el género del cliente.
+     * @param tipo_hab el tipo de habitación reservada por el cliente.
+     * @param celular el número de celular del cliente.
+     * @param llegada la fecha de llegada del cliente.
+     * @param salida la fecha de salida del cliente.
+     */
     public Reservas(String cedula, String nombre, String apellido, String correo, String genero, String tipo_hab, String celular, String llegada, String salida) {
         this.cedula = cedula;
         this.nombre = nombre;
@@ -31,6 +44,7 @@ public class Reservas {
         this.salida = salida;
      }
 
+    // Métodos setters
     public void setCedula(String cedula) {
         this.cedula = cedula;
     }
@@ -67,6 +81,7 @@ public class Reservas {
         this.salida = salida;
     }
 
+    // Métodos getters
     public String getCedula() {
         return cedula;
     }
@@ -103,6 +118,11 @@ public class Reservas {
         return salida;
     }
     
+    /**
+     * Método que devuelve una cadena con la información de la reserva.
+     * 
+     * @return una cadena con la información de la reserva.
+     */
     public String toReservas(){
         return "C.I: " +this.cedula+"\n" + "Nombre: " +this.nombre+"\n" + "Apellido: " +this.apellido+"\n" + "Correo: " +this.correo+"\n" + "Genero: " +this.genero+"\n" + "Tipo de habitación: " +this.tipo_hab+"\n"+ "Celular: " +this.celular+"\n" + "Llegada: " +this.llegada +"\n"+ "Salida: " +this.salida;
     }

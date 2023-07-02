@@ -18,6 +18,17 @@ public class Estado {
     private String celular;
     private String llegada; 
     
+    /**
+     * Constructor de la clase Estado.
+     * 
+     * @param habitacion el número de la habitación.
+     * @param nombre el nombre del cliente.
+     * @param apellido el apellido del cliente.
+     * @param correo el correo electrónico del cliente.
+     * @param genero el género del cliente.
+     * @param celular el número de celular del cliente.
+     * @param llegada la fecha de llegada del cliente.
+     */
     public Estado(Integer habitacion, String nombre, String apellido, String correo, String genero, String celular, String llegada) {
         this.habitacion = habitacion;
         this.nombre = nombre;
@@ -28,7 +39,7 @@ public class Estado {
         this.llegada = llegada;
     }
 
-
+    // Métodos setters
     public void setHabitacion(Integer habitacion) {
         this.habitacion = habitacion;
     }
@@ -56,7 +67,8 @@ public class Estado {
     public void setLlegada(String llegada) {
         this.llegada = llegada;
     }
-
+    
+    // Métodos getters
     public Integer getHabitacion() {
         return habitacion;
     }
@@ -85,10 +97,13 @@ public class Estado {
         return llegada;
     }
 
-    
+    /**
+     * Método que devuelve una cadena con la información del estado.
+     * 
+     * @return una cadena con la información del estado.
+     */
     public String toEstado(){
         return "Numero de habitacion: " +this.habitacion+"\n" + "Nombre: " +this.nombre+"\n" + "Apellido: " +this.apellido+"\n" + "Correo: " +this.correo+"\n" + "Genero: " +this.genero+"\n" + "Celular: " +this.celular+"\n" + "Llegada: " +this.llegada;
     }
-
     
 }

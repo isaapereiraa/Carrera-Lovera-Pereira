@@ -16,7 +16,18 @@ public class Historico {
     private String genero;
     private String llegada;
     private Integer num_hab;
-
+    
+    /**
+     * Constructor de la clase Historico.
+     * 
+     * @param cedula la cédula del cliente.
+     * @param nombre el nombre del cliente.
+     * @param apellido el apellido del cliente.
+     * @param correo el correo electrónico del cliente.
+     * @param genero el género del cliente.
+     * @param llegada la fecha de llegada del cliente.
+     * @param num_hab el número de la habitación del cliente.
+     */
     public Historico(int cedula, String nombre, String apellido, String correo, String genero, String llegada, Integer num_hab) {
         this.cedula = cedula;
         this.nombre = nombre;
@@ -26,7 +37,8 @@ public class Historico {
         this.llegada = llegada;
         this.num_hab = num_hab;
     }
-
+    
+    // Métodos getters
     public int getCedula() {
         return cedula;
     }
@@ -55,6 +67,7 @@ public class Historico {
         return num_hab;
     }
 
+    // Métodos setters
     public void setCedula(int cedula) {
         this.cedula = cedula;
     }
@@ -83,7 +96,11 @@ public class Historico {
         this.num_hab = num_hab;
     }
     
-
+    /**
+     * Método que devuelve una cadena con la información del histórico.
+     * 
+     * @return una cadena con la información del histórico.
+     */
     public String toString() {
         return "Cédula: " + cedula + ", Nombre: " + nombre + ", Apellido: " + apellido + ", Correo: " + correo + ", Género: " + genero + ", Fecha de llegada: " + llegada + ", Número de habitación: " + num_hab;
     }

@@ -18,8 +18,14 @@ import java.io.IOException;
  */
 public class Csv {
     
-    
-    
+     /**
+     * Lee el archivo CSV que contiene la información del estado de los clientes y 
+     * los almacena en una Hashtable de Estado.
+     *
+     * @param clientes la Hashtable que almacenará la información del estado de los clientes.
+     * @throws FileNotFoundException si el archivo CSV no se encuentra.
+     * @throws IOException si ocurre algún error de lectura del archivo CSV.
+     */
     public static void leerEstado(Hashtable<Estado> clientes) throws FileNotFoundException, IOException{
         String filePath = "test" + File.separator + "Estado.csv";
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
@@ -46,6 +52,14 @@ public class Csv {
         }
     }
     
+    /**
+    * Lee el archivo CSV que contiene la información de las habitaciones y las almacena en una
+    * Hashtable de Habitacion.
+    *
+    * @param habitacion la Hashtable que almacenará la información de las habitaciones.
+    * @throws FileNotFoundException si el archivo CSV no se encuentra.
+    * @throws IOException si ocurre algún error de lectura del archivo CSV.
+    */
     public static void leerHabitaciones(Hashtable <Habitacion> habitacion) throws FileNotFoundException, IOException{
         try (BufferedReader br = new BufferedReader(new FileReader("test\\Habitaciones.csv"))){
             String linea;
@@ -64,7 +78,15 @@ public class Csv {
             System.out.println("Archivo no encontrado");
         }
     }
-     
+    
+    /**
+    * Lee el archivo CSV que contiene la información del historial de llamadas y las almacena
+    * en un Árbol Binario de Búsqueda (ABB).
+    *
+    * @param historial el ABB que almacenará la información del historial de llamadas.
+    * @throws FileNotFoundException si el archivo CSV no se encuentra.
+    * @throws IOException si ocurre algún error de lectura del archivo CSV.
+    */
     public static void leerHistorico(ABB historial) throws FileNotFoundException, IOException{
         String filePath = "test" + File.separator + "Historico.csv";
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
@@ -104,11 +126,13 @@ public class Csv {
     }
     
     /**
-     *
-     * @param clientes
-     * @throws FileNotFoundException
-     * @throws IOException
-     */
+    * Lee el archivo CSV que contiene la información de las reservas y las almacena en un
+    * Árbol Binario de Búsqueda (ABB).
+    *
+    * @param clientes el ABB que almacenará la información de los clientes y sus reservas.
+    * @throws FileNotFoundException si el archivo CSV no se encuentra.
+    * @throws IOException si ocurre algún error de lectura del archivo CSV.
+    */
     public static void leerReservas(ABB clientes) throws FileNotFoundException, IOException{
         String filePath = "test" + File.separator + "Reservas.csv";
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
@@ -141,6 +165,4 @@ public class Csv {
         }
     }
     
-
-
 }
