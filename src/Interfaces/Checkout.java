@@ -66,7 +66,7 @@ public class Checkout extends javax.swing.JFrame {
 
         Buscar.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         Buscar.setForeground(new java.awt.Color(204, 204, 204));
-        Buscar.setText("Buscar");
+        Buscar.setText("Ok");
         Buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         Buscar.setContentAreaFilled(false);
         Buscar.setFocusTraversalPolicyProvider(true);

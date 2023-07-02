@@ -77,7 +77,7 @@ public class Checkin extends javax.swing.JFrame {
 
         BotonBuscar.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
         BotonBuscar.setForeground(new java.awt.Color(204, 204, 204));
-        BotonBuscar.setText("Buscar");
+        BotonBuscar.setText("Ok");
         BotonBuscar.setBorderPainted(false);
         BotonBuscar.setContentAreaFilled(false);
         BotonBuscar.addActionListener(new java.awt.event.ActionListener() {
