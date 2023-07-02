@@ -28,11 +28,6 @@ public class Estado {
         this.llegada = llegada;
     }
 
-    Estado(int habitacion, String nombre, String apellido) {
-        this.habitacion = habitacion;
-        this.nombre = nombre;
-        this.apellido = apellido;
-    }
 
     public void setHabitacion(Integer habitacion) {
         this.habitacion = habitacion;

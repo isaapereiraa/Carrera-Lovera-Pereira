@@ -4,11 +4,8 @@
  */
 package Interfaces;
 
-import Clases.Estado;
 import Clases.Csv;
-import Clases.Global;
 import Estructuras.ABB;
-import Estructuras.ArrayList;
 import Estructuras.Hashtable;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -143,10 +140,11 @@ public class Inicio extends javax.swing.JFrame {
 
         Hashtable hash = new Hashtable(); //Hashtable con nombres como key
         ABB arbol = new ABB();
+        ABB arbol2 = new ABB();
         try {
             Csv.leerEstado(hash);
             Csv.leerReservas(arbol);
-
+            Csv.leerHistorico(arbol2);
             
             Menu menu = new Menu();
             

@@ -203,8 +203,11 @@ public class List <T> {
             }
           
     }
-    
-        
+    /**
+    * Metodo que indica si un elemento esta contenido en una lista
+     * @param elemento 
+     * @return true o false
+    */
     public boolean contains(T elemento) {
     Nodo<T> actual = head;
     while (actual != null) {
@@ -215,7 +218,11 @@ public class List <T> {
     }
     return false;
     }
-
+    /**
+    *  Metodo que halla los elememtos que hay en una lista pero no en la otra
+     * @param lista2 lista de elementos 
+     * @return una lista con los elementos que no estan en la lista1 pero si en la lista2
+    */
    public List<T> getElementFaltantes(List<T> lista2) {
     List<T> elementosFaltantes = new List<>();
     // Iteramos sobre los elementos de la lista2
@@ -225,7 +232,6 @@ public class List <T> {
             elementosFaltantes.insertLast(lista2.get(i));
         }
     }
-    // Devolvemos la lista de elementos faltantes
     return elementosFaltantes;
     }
 

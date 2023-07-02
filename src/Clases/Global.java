@@ -13,6 +13,7 @@ import Estructuras.ABB;
 public class Global {
     private static Hashtable hashtable;
     private static ABB abb;
+    private static ABB abb1;
     
     /**
      * 
@@ -42,6 +43,14 @@ public class Global {
      */
     public static void setABB(ABB abb) {
         Global.abb = abb;
+    }
+
+    public static ABB getAbb1() {
+        return abb1;
+    }
+
+    public static void setAbb1(ABB abb1) {
+        Global.abb1 = abb1;
     }
     
     /**

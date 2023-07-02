@@ -8,7 +8,6 @@ import Clases.Global;
 import Clases.TextoPredeterminado;
 import javax.swing.JOptionPane;
 import Estructuras.ABB;
-import Estructuras.Nodo;
 
 /**
  *

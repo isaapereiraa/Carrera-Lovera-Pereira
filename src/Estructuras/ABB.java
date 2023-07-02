@@ -3,13 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Estructuras;
-import Clases.Habitacion;
 import Clases.Historico;
 import Clases.Reservas;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 
 /**
  *Implementacion de las primitivas de un arbol binario de busqueda
@@ -235,6 +230,11 @@ public class ABB {
         return reemplazo;
     }
     
+    /**
+     * Metodo que permite a traves de la cedula hallar los datos de la reserva
+     * @param key cedula 
+     * @return datos de la reserva en forma de string
+    */
      public String getReserva(int key){
         Nodo nodo = find(key);
         if(nodo != null && nodo.contenido instanceof Reservas){
@@ -244,7 +244,12 @@ public class ABB {
             return null;
         }
     }
-     
+    
+      /**
+     * Metodo que permite a traves de la cedula hallar los datos de la reserva
+     * @param key cedula 
+     * @return datos de la reserva como Object
+    */
      public Reservas getContenido(int key){
         Nodo nodo = find(key);
         if(nodo != null && nodo.contenido instanceof Reservas){
@@ -254,7 +259,12 @@ public class ABB {
             return null;
         }
     }
-     
+    
+      /**
+     * Metodo que permite a traves de la cedula hallar los datos del historico
+     * @param key cedula 
+     * @return datos del historico como Object
+    */ 
     public Historico getContenido1(int key){
         Nodo nodo = find(key);
         if(nodo != null && nodo.contenido instanceof Historico){
@@ -264,6 +274,12 @@ public class ABB {
             return null;
         }
     }
+    
+    /**
+     * Metodo que permite a traves de la cedula obtener el tipo de habitacion de la reserva
+     * @param key cedula 
+     * @return tipo de habitacion de la reserva
+    */ 
     public String obtenerTipoHab(int key){
         Nodo nodo = find(key);
         if(nodo != null && nodo.contenido instanceof Reservas){
@@ -273,77 +289,29 @@ public class ABB {
             return null;
         }
     }
-    
-//    public int[] hab_ocupadas(){
-//        Nodo nodo;
-//        
-//        while if (nodo.llave != null){
-//            int [] hab_ocupadas;
-//            hab_ocupadas.append(nodo.llave);
-//        }
-//    }
-    
-//    public ABB buscarClientes(int num_hab) {
-//        ABB clientes = new ABB();
-//        Nodo aux = raiz;
-//        while (aux != null) {
-//            Integer llave = aux.llave;
-//            if (num_hab == llave) {
-//                Historico historico = (Historico) aux.contenido;
-//                clientes.insert(historico.getCedula(), historico);
-//                // Detener la búsqueda cuando se encuentra un nodo con el número de habitación buscado.
-//                break;
-//            } else if (num_hab < llave) {
-//                aux = aux.left;
-//            } else {
-//                aux = aux.right;
-//            }
-//        }
-//        return clientes;
-//    }
-    
-//    public ArrayList<Historico> buscarClientesPorHabitacion(int num_habitacion) {
-//        ArrayList<Historico> clientes = new ArrayList<>();
-//        Nodo nodoActual = raiz;
-//
-//        while(nodoActual != null) {
-//            if(nodoActual.llave == num_habitacion) {
-//                // Se encontró la habitación, buscar los clientes en el subárbol izquierdo y derecho
-//                buscarClientesEnSubarbol(nodoActual.left, clientes, num_habitacion);
-//                buscarClientesEnSubarbol(nodoActual.right, clientes, num_habitacion);
-//                break;
-//            } else if(nodoActual.llave > num_habitacion) {
-//                nodoActual = nodoActual.left;
-//            } else {
-//                nodoActual = nodoActual.right;
-//            }
-//        }
-//
-//    return clientes;
-//}
-//
-//    private void buscarClientesEnSubarbol(Nodo nodoActual, ArrayList<Historico> clientes, int num_habitacion) {
-//        if(nodoActual != null) {
-//            buscarClientesEnSubarbol(nodoActual.left, clientes, num_habitacion);
-//            buscarClientesEnSubarbol(nodoActual.right, clientes, num_habitacion);
-//
-//            if(nodoActual.contenido instanceof Historico && ((Historico)nodoActual.contenido).getNum_hab() == num_habitacion) {
-//                clientes.add((Historico)nodoActual.contenido);
-//            }
-//        }
-//    }
-
+   
+    /**
+     * Metodo que permite a traves del numero de habitacion obtener una lista con los clientes que estaban en el historico de esa habitacion 
+     * @param num_habitacion numero de habitación
+     * @return lista de información de los clientes que estuvieron en la habitación
+    */ 
     public ArrayList<Historico> getClientesPorHabitacion(int num_habitacion){
         ArrayList<Historico> clientes = new ArrayList<Historico>();
         getClientesPorHabitacionRec(raiz, num_habitacion, clientes);
         return clientes;
     }
-
+    
+    /**
+     * Metodo recursivo
+     * Metodo que permite a traves del numero de habitacion obtener una lista con los clientes que estaban en el historico de esa habitacion 
+     * @param num_habitacion numero de habitación
+     * @return lista de información de los clientes que estuvieron en la habitación
+    */ 
     private void getClientesPorHabitacionRec(Nodo nodo, int num_habitacion, ArrayList<Historico> clientes){
     if (nodo != null) {
         if (nodo.contenido instanceof Historico) {
             Historico historico = (Historico) nodo.contenido;
-            System.out.println("Encontrado objeto Historico con el número de habitación " + historico.getNum_hab());
+//            System.out.println("Encontrado objeto Historico con el número de habitación " + historico.getNum_hab());
             if (historico.getNum_hab() == num_habitacion) {
                 clientes.add(historico);
             }

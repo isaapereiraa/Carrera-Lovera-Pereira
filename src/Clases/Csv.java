@@ -4,7 +4,6 @@
  */
 package Clases;
 import Estructuras.ABB;
-import Estructuras.ArrayList;
 import Estructuras.Hashtable;
 import Estructuras.Nodo;
 import java.io.BufferedReader;
@@ -65,55 +64,7 @@ public class Csv {
             System.out.println("Archivo no encontrado");
         }
     }
-    
-//    public static void leerHistorico(ArrayList<Estado> clientes) throws FileNotFoundException, IOException{
-//        String filePath = "test" + File.separator + "Historico.csv";
-//        try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
-//            String linea;
-//            linea = br.readLine();
-//            while ((linea = br.readLine()) != null){
-//                String[] datos = linea.split(",");
-//                int hab = Integer.parseInt(datos[0]);
-//                String nombre = datos[1];
-//                String apellido = datos[2];
-//                Estado llamada = new Estado(hab, nombre, apellido);
-//                clientes.add(llamada);
-//                
-//            }
-//        } catch (IOException e){
-//            System.out.println("Archivo no encontrado");
-//        }
-//    }
-//    
-//    public static void leerHistorico(ArrayList<Historico> clientes) throws FileNotFoundException, IOException{
-//   String filePath = "test" + File.separator + "Historico.csv";
-//   try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
-//       String linea;
-//       // Se lee la primera línea para omitirla, ya que es la cabecera del archivo.
-//       br.readLine();
-//       while ((linea = br.readLine()) != null){
-//           String[] datos = linea.split(",");
-//           // Se verifica que el arreglo datos tenga al menos 7 elementos antes de acceder a ellos.
-//           if (datos.length >= 7) {
-//               int cedula = Integer.parseInt(datos[0].replaceAll("[\",]", ""));
-//               String nombre = datos[1];
-//               String apellido = datos[2];
-//               String email = datos[3];
-//               String genero = datos[4];
-//               String llegada = datos[5];
-//               int num_hab = Integer.parseInt(datos[6]);
-//               Historico llamada = new Historico(cedula, nombre, apellido, email, genero, llegada, num_hab);
-//               clientes.add(llamada);
-//           }
-//          
-//       }
-//   } catch (FileNotFoundException e){
-//       System.out.println("Archivo no encontrado");
-//   } catch (IOException e){
-//       System.out.println("Error al leer el archivo");
-//   }
-//}
-    
+     
     public static void leerHistorico(ABB historial) throws FileNotFoundException, IOException{
         String filePath = "test" + File.separator + "Historico.csv";
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
@@ -142,6 +93,7 @@ public class Csv {
                     int num_hab = Integer.parseInt(datos[8]);
                     Historico llamada = new Historico(cedula, nombre, apellido, email, genero, llegada, num_hab);
                     historial.insert(cedula, llamada);
+                    Global.setAbb1(historial);
                 }
             }
         } catch (FileNotFoundException e){

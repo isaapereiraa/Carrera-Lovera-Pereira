@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaces;
-import Clases.Csv;
 import Clases.TextoPredeterminado;
 import javax.swing.JOptionPane;
 import Clases.Global;
@@ -12,15 +11,12 @@ import Clases.Estado;
 import Clases.Historico;
 import Estructuras.ABB;
 import Estructuras.Nodo;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  *
  * @author  isabella, adrian, alejandra
  */
 public class Checkout extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Registro
      */
@@ -29,6 +25,7 @@ public class Checkout extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         TextoPredeterminado nombreCliente = new TextoPredeterminado("Nombre", NombreCliente);
         TextoPredeterminado apellidoCliente = new TextoPredeterminado("Apellido", ApellidoCliente);
+        TextoPredeterminado cedula = new TextoPredeterminado("Cedula", Cedula);
     }
 
     /**
@@ -46,6 +43,7 @@ public class Checkout extends javax.swing.JFrame {
         ApellidoCliente = new javax.swing.JTextField();
         BotonMenu = new javax.swing.JButton();
         Buscar = new javax.swing.JButton();
+        Cedula = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +76,12 @@ public class Checkout extends javax.swing.JFrame {
             }
         });
 
+        Cedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CedulaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -91,27 +95,34 @@ public class Checkout extends javax.swing.JFrame {
                 .addComponent(Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
                 .addGap(210, 210, 210))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(BotonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ApellidoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(177, 177, 177))))
+                .addContainerGap(433, Short.MAX_VALUE)
+                .addComponent(BotonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ApellidoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49)
+                .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel1)
-                .addGap(47, 47, 47)
-                .addComponent(NombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel1)
+                        .addGap(51, 51, 51)
+                        .addComponent(NombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)))
                 .addComponent(ApellidoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(26, 26, 26)
                 .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(BotonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -133,38 +144,36 @@ public class Checkout extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-//        ABB arbol2 = new ABB();
-//        try {
-//            Csv.leerHistorico(arbol2);
-//        } catch (IOException ex) {
-//            Logger.getLogger(Habitaciones.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
         if ("".equals(NombreCliente.getText()) || "".equals(ApellidoCliente.getText())) {
             JOptionPane.showMessageDialog(null, "Por favor llene ambos campos");
         }
         else{
             Hashtable hash = Global.getHash();
-//            ABB arbol = Global.getABB();
             String name = Global.capitalizar(NombreCliente.getText());
             String lastname = Global.capitalizar(ApellidoCliente.getText());
             String fullname = name + lastname;
-
+            String ced = Cedula.getText().replaceAll("\\.", "");
+            
             if (hash.containsKey(fullname)== true){
+                Nodo <Estado> res = hash.get(fullname);
+                Historico llamada;
+                llamada = new Historico(Integer.parseInt(ced), res.getData().getNombre() , res.getData().getApellido(), res.getData().getCorreo(), res.getData().getGenero(), res.getData().getLlegada(), res.getData().getHabitacion());
+                ABB arbol2 = Global.getAbb1();
+                arbol2.insert(Integer.parseInt(ced), llamada);
+                Global.setAbb1(arbol2);
                 hash.remove(fullname);
                 Global.setHash(hash);
-//                arbol.ge
-//                Clases.Historico his = arbol2.getContenido1();
-//                Historico llamada = new Historico(cedula, nombre, apellido, email, genero, llegada, num_hab);
-//                arbol2.insert(cedula, llamada);
                 JOptionPane.showMessageDialog(null, "Check out completado. Habitación libre!");
                 
                 NombreCliente.setText(null);
                 ApellidoCliente.setText(null);
+                Cedula.setText(null);
             } else {
                 JOptionPane.showMessageDialog(null, "El cliente no se encuentra en el sistema");
                 NombreCliente.setText(null);
                 ApellidoCliente.setText(null);
+                Cedula.setText(null);
+
             }
         }
     }//GEN-LAST:event_BuscarActionPerformed
@@ -174,6 +183,10 @@ public class Checkout extends javax.swing.JFrame {
         Menu menu = new Menu();
         menu.setVisible(true);
     }//GEN-LAST:event_BotonMenuActionPerformed
+
+    private void CedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CedulaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,15 +222,18 @@ public class Checkout extends javax.swing.JFrame {
                 new Checkout().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ApellidoCliente;
     private javax.swing.JButton BotonMenu;
     private javax.swing.JButton Buscar;
+    private javax.swing.JTextField Cedula;
     private javax.swing.JTextField NombreCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
 }
 

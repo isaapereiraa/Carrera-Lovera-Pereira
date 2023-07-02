@@ -33,6 +33,11 @@ public class Hashtable<T> {
             this.value = value;
             this.next = null;
         }
+
+        public void setKey(String key) {
+            this.key = key;
+        }
+        
     }
 
     /**
@@ -77,8 +82,8 @@ public class Hashtable<T> {
             return entry.value;
         }
     }
-        
-        /**
+      
+     /**
      * Retorna una lista con las claves de la tabla hash
      * @return
      */

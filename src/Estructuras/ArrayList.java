@@ -4,10 +4,9 @@
  */
 package Estructuras;
 
-import Clases.Historico;
 
 /**
- *
+ * Constructor y primitivas de la estructura ArrayList
  * @author  isabella, adrian, alejandra
  */
 public class ArrayList <T>{
@@ -88,7 +87,11 @@ public class ArrayList <T>{
         array = newArray;
         capacity *= 2;
     }
-
+    
+    /**
+     * Metodo para leer cada elemento de una arraylist y dar su información en forma de string
+     * @return un string con la información de los elementos 
+     */
     public String elementsToString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < size; i++) {

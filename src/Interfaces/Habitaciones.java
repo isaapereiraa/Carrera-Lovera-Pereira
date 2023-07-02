@@ -4,28 +4,19 @@
  */
 package Interfaces;
 
-import Clases.Csv;
-import Clases.Estado;
 import Clases.Global;
-import Clases.Habitacion;
 import Clases.Historico;
 import Clases.TextoPredeterminado;
 import javax.swing.JOptionPane;
 import Estructuras.ABB;
 import Estructuras.ArrayList;
-import Estructuras.Hashtable;
-import Estructuras.List;
-import Estructuras.Nodo;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author  isabella, adrian, alejandra
  */
 public class Habitaciones extends javax.swing.JFrame {
-
+     
     /**
      * Creates new form Reservas
      */
@@ -155,20 +146,19 @@ public class Habitaciones extends javax.swing.JFrame {
 
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
     String habitacionTexto = inputHabitacion.getText().replaceAll(",", "");
-    ABB arbol2 = new ABB();
-        try {
-            Csv.leerHistorico(arbol2);
-        } catch (IOException ex) {
-            Logger.getLogger(Habitaciones.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
     if (!habitacionTexto.matches("\\d+")) {
         JOptionPane.showMessageDialog(null, "Por favor ingrese un número de habitación válido");
     } else {
-//        arbol2= Global.getABB();
         int num_hab = Integer.parseInt(habitacionTexto);
-        Resultado.setText(arbol2.getClientesPorHabitacion(num_hab).elementsToString());
-        inputHabitacion.setText(null);
+        ABB arbol2 = Global.getAbb1();
+        ArrayList<Historico> clientes = arbol2.getClientesPorHabitacion(num_hab);
+        if (!clientes.isEmpty()){
+            Resultado.setText(clientes.elementsToString());
+            inputHabitacion.setText(null);
+        }else{
+            JOptionPane.showMessageDialog(null, "No hay historial para esta habitación");
+            inputHabitacion.setText(null);
+        }
         }
     }//GEN-LAST:event_BotonBuscarActionPerformed
 
@@ -223,4 +213,5 @@ public class Habitaciones extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
 }
