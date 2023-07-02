@@ -66,22 +66,88 @@ public class Csv {
         }
     }
     
-    public static void leerHistorico(ArrayList<Estado> clientes) throws FileNotFoundException, IOException{
+//    public static void leerHistorico(ArrayList<Estado> clientes) throws FileNotFoundException, IOException{
+//        String filePath = "test" + File.separator + "Historico.csv";
+//        try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
+//            String linea;
+//            linea = br.readLine();
+//            while ((linea = br.readLine()) != null){
+//                String[] datos = linea.split(",");
+//                int hab = Integer.parseInt(datos[0]);
+//                String nombre = datos[1];
+//                String apellido = datos[2];
+//                Estado llamada = new Estado(hab, nombre, apellido);
+//                clientes.add(llamada);
+//                
+//            }
+//        } catch (IOException e){
+//            System.out.println("Archivo no encontrado");
+//        }
+//    }
+//    
+//    public static void leerHistorico(ArrayList<Historico> clientes) throws FileNotFoundException, IOException{
+//   String filePath = "test" + File.separator + "Historico.csv";
+//   try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
+//       String linea;
+//       // Se lee la primera línea para omitirla, ya que es la cabecera del archivo.
+//       br.readLine();
+//       while ((linea = br.readLine()) != null){
+//           String[] datos = linea.split(",");
+//           // Se verifica que el arreglo datos tenga al menos 7 elementos antes de acceder a ellos.
+//           if (datos.length >= 7) {
+//               int cedula = Integer.parseInt(datos[0].replaceAll("[\",]", ""));
+//               String nombre = datos[1];
+//               String apellido = datos[2];
+//               String email = datos[3];
+//               String genero = datos[4];
+//               String llegada = datos[5];
+//               int num_hab = Integer.parseInt(datos[6]);
+//               Historico llamada = new Historico(cedula, nombre, apellido, email, genero, llegada, num_hab);
+//               clientes.add(llamada);
+//           }
+//          
+//       }
+//   } catch (FileNotFoundException e){
+//       System.out.println("Archivo no encontrado");
+//   } catch (IOException e){
+//       System.out.println("Error al leer el archivo");
+//   }
+//}
+    
+    public static void leerHistorico(ABB historial) throws FileNotFoundException, IOException{
         String filePath = "test" + File.separator + "Historico.csv";
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
             String linea;
-            linea = br.readLine();
+            // Se lee la primera línea para omitirla, ya que es la cabecera del archivo.
+            br.readLine();
             while ((linea = br.readLine()) != null){
                 String[] datos = linea.split(",");
-                int hab = Integer.parseInt(datos[0]);
-                String nombre = datos[1];
-                String apellido = datos[2];
-                Estado llamada = new Estado(hab, nombre, apellido);
-                clientes.add(llamada);
-                
+                // Se verifica que el arreglo datos tenga al menos 7 elementos antes de acceder a ellos.
+                if (datos.length >= 9) {
+                    String cedula1 = datos[0].replaceAll("\"", "");
+                    String cedula2 = datos[1];
+                    String cedula3 = datos[2].replaceAll("\"", "");
+                    String cedulaTotal;
+                    if(datos.length <=8){
+                        cedulaTotal = cedula1 + cedula2;
+                    }else{
+                        cedulaTotal = cedula1 + cedula2 + cedula3;
+                    } 
+                    int cedula = Integer.parseInt(cedulaTotal);
+                    String nombre = datos[3];
+                    String apellido = datos[4];
+                    String email = datos[5];
+                    String genero = datos[6];
+                    String llegada = datos[7];
+                    int num_hab = Integer.parseInt(datos[8]);
+                    Historico llamada = new Historico(cedula, nombre, apellido, email, genero, llegada, num_hab);
+                    historial.insert(cedula, llamada);
+                }
             }
-        } catch (IOException e){
+        } catch (FileNotFoundException e){
             System.out.println("Archivo no encontrado");
+        } catch (IOException e){
+            System.out.println("Error al leer el archivo");
         }
     }
     

@@ -4,6 +4,8 @@
  */
 package Estructuras;
 
+import Clases.Historico;
+
 /**
  *
  * @author  isabella, adrian, alejandra
@@ -17,9 +19,9 @@ public class ArrayList <T>{
      * Constructor
      */
     public ArrayList() {
-        this.array = (T[]) new Object[10];
+        this.array = (T[]) new Object[500];
         this.size = 0;
-        this.capacity = 10;
+        this.capacity = 500;
     }
 
     /**
@@ -27,11 +29,7 @@ public class ArrayList <T>{
      * @param element
      */
     public void add(T element) {
-        if (size == capacity) {
-            extendCapacity();
-        }
-        array[size] = element;
-        size++;
+        add(element);
     }
 
     /**
@@ -88,6 +86,12 @@ public class ArrayList <T>{
         capacity *= 2;
     }
 
-    
+    public String elementsToString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < size; i++) {
+            sb.append(array[i].toString()).append("\n");
+        }
+        return sb.toString();
+    }
 
 }
