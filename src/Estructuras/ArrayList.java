@@ -28,10 +28,13 @@ public class ArrayList <T>{
      * Añade un elemento al final del ArrayList
      * @param element
      */
-    public void add(T element) {
-        add(element);
-    }
-
+       public void add(T element) {
+       if (size == capacity) {
+           extendCapacity();
+       }
+       array[size] = element;
+       size++;
+   }
     /**
      * Remueve el elemento en la posición indicada
      * @param index

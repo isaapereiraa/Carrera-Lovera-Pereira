@@ -3,12 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaces;
+import Clases.Csv;
 import Clases.TextoPredeterminado;
 import javax.swing.JOptionPane;
 import Clases.Global;
 import Estructuras.Hashtable;
 import Clases.Estado;
+import Clases.Historico;
+import Estructuras.ABB;
 import Estructuras.Nodo;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author  isabella, adrian, alejandra
@@ -127,11 +133,19 @@ public class Checkout extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+//        ABB arbol2 = new ABB();
+//        try {
+//            Csv.leerHistorico(arbol2);
+//        } catch (IOException ex) {
+//            Logger.getLogger(Habitaciones.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
         if ("".equals(NombreCliente.getText()) || "".equals(ApellidoCliente.getText())) {
             JOptionPane.showMessageDialog(null, "Por favor llene ambos campos");
         }
         else{
             Hashtable hash = Global.getHash();
+//            ABB arbol = Global.getABB();
             String name = Global.capitalizar(NombreCliente.getText());
             String lastname = Global.capitalizar(ApellidoCliente.getText());
             String fullname = name + lastname;
@@ -139,6 +153,10 @@ public class Checkout extends javax.swing.JFrame {
             if (hash.containsKey(fullname)== true){
                 hash.remove(fullname);
                 Global.setHash(hash);
+//                arbol.ge
+//                Clases.Historico his = arbol2.getContenido1();
+//                Historico llamada = new Historico(cedula, nombre, apellido, email, genero, llegada, num_hab);
+//                arbol2.insert(cedula, llamada);
                 JOptionPane.showMessageDialog(null, "Check out completado. Habitación libre!");
                 
                 NombreCliente.setText(null);

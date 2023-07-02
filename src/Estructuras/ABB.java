@@ -254,6 +254,16 @@ public class ABB {
             return null;
         }
     }
+     
+    public Historico getContenido1(int key){
+        Nodo nodo = find(key);
+        if(nodo != null && nodo.contenido instanceof Historico){
+            Historico historico = (Historico) nodo.contenido;
+            return historico;
+        } else {
+            return null;
+        }
+    }
     public String obtenerTipoHab(int key){
         Nodo nodo = find(key);
         if(nodo != null && nodo.contenido instanceof Reservas){
@@ -324,25 +334,28 @@ public class ABB {
 //    }
 
     public ArrayList<Historico> getClientesPorHabitacion(int num_habitacion){
-        ArrayList<Historico> clientes = new ArrayList<>();
+        ArrayList<Historico> clientes = new ArrayList<Historico>();
         getClientesPorHabitacionRec(raiz, num_habitacion, clientes);
         return clientes;
     }
 
     private void getClientesPorHabitacionRec(Nodo nodo, int num_habitacion, ArrayList<Historico> clientes){
-        if (nodo == null || nodo.contenido == null){
-            return;
-        }
-        if (nodo.contenido instanceof Historico){
+    if (nodo != null) {
+        if (nodo.contenido instanceof Historico) {
             Historico historico = (Historico) nodo.contenido;
-            if (historico.getNum_hab().equals(num_habitacion)){
+            System.out.println("Encontrado objeto Historico con el número de habitación " + historico.getNum_hab());
+            if (historico.getNum_hab() == num_habitacion) {
                 clientes.add(historico);
             }
         }
-        getClientesPorHabitacionRec(nodo.left, num_habitacion, clientes);
-        getClientesPorHabitacionRec(nodo.right, num_habitacion, clientes);
+        if (nodo.left != null) {
+            getClientesPorHabitacionRec(nodo.left, num_habitacion, clientes);
+        }
+        if (nodo.right != null) {
+            getClientesPorHabitacionRec(nodo.right, num_habitacion, clientes);
+        }
     }
-
+}
 
 
 }
